@@ -1,3 +1,4 @@
+@prefox owl: <http://www.w3.org/2002/07/owl#>
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
