@@ -6,7 +6,8 @@
 @prefix gf: <http://georgfischer.com/milling#> .
 
 <http://georgfischer.com/milling>
-    a owl:Ontology .
+    a owl:Ontology ;
+    owl:imports <http://purl.oclc.org/NET/ssnx/ssn> .
 
 gf:Machine
     a sosa:FeatureOfInterest ;
@@ -16,4 +17,3 @@ gf:EnvironmentTemperature
     a sosa:ObservableProperty ;
     rdfs:label "Environment Temperature"@en ;
     ssn:isPropertyOf gf:Machine .
-
