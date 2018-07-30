@@ -10,8 +10,8 @@
 @base <http://georgfischer.com/milling> .
 
 <http://georgfischer.com/milling> rdf:type owl:Ontology ;
-                                   owl:imports <http://purl.oclc.org/NET/ssnx/ssn> ,
-                                               <http://www.loa-cnr.it/ontologies/DUL.owl> ;
+                                   #owl:imports <http://purl.oclc.org/NET/ssnx/ssn> ,
+                                   #            <http://www.loa-cnr.it/ontologies/DUL.owl> ;
                                    <http://purl.org/dc/elements/1.1/creator> "W3C Semantic Sensor Network Incubator Group"^^xsd:string ;
                                    rdfs:comment " Please report any errors to the Semantic Sensor Network Incubator Activity via the public W3C list public-xg-ssn@w3.org"^^xsd:string ;
                                    rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/" ;
