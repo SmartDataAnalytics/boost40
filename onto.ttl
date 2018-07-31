@@ -4195,7 +4195,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                        <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductionSystemModelData> ;
                                        <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#IEC> ;
                                        <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_61158> ;
-                                       <https://w3id.org/i40/sto#hasPublicationDate> "2013-06"@xsd:date ;
+                                       <https://w3id.org/i40/sto#hasPublicationDate> "2013-06"^^xsd:date ;
                                        <https://w3id.org/i40/sto#norm> "24760"^^xsd:string ;
                                        <http://purl.org/dc/terms/description> "ISO/IEC 29182-1: provides a general overview of the characteristics of a sensor network and the organization of the entities that comprise such a network. It also describes the general requirements that are identified for sensor networks."@en ;
                                        <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Communications> ;
@@ -4210,7 +4210,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                          <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#IEC> ;
                                          <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62443> ;
                                          <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#M2M> ;
-                                         <https://w3id.org/i40/sto#hasPublicationDate> "2016-02-03"@xsd:date ;
+                                         <https://w3id.org/i40/sto#hasPublicationDate> "2016-02-03"^^xsd:date ;
                                          <https://w3id.org/i40/sto#norm> "60839"^^xsd:string ;
                                          <http://purl.org/dc/terms/description> """IEC 60839-5-2:2016 specifies the general equipment requirements for the performance, reliability, resilience, security and safety characteristics of supervised premises transceiver (SPT) installed in supervised premises and used in alarm transmission systems (ATS). A supervised premises transceiver can be a stand-alone device or an integrated part of an alarm system. These requirements also apply to the SPT sharing means of interconnection, control, communication and power supplies with other applications. The alarm transmission system requirements and classifications are defined within IEC 60839-5-1. This new edition includes the following significant technical changes with respect to the previous edition:
         - reflects the current technological state of art (IP networks);
@@ -4410,7 +4410,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductionSystemModelData> ;
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#IEC> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2012-02-22"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2012-02-22"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "62337"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Commissioning of electrical, instrumentation and control systems in the process industry - Specific phases and milestones."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Conditional_Monitoring> ,
@@ -4579,7 +4579,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                         <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#IEC> ;
                                         <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62337> ;
                                         <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                        <https://w3id.org/i40/sto#hasPublicationDate> "2003-10-26"@xsd:date ;
+                                        <https://w3id.org/i40/sto#hasPublicationDate> "2003-10-26"^^xsd:date ;
                                         <https://w3id.org/i40/sto#norm> "62337"^^xsd:string ;
                                         <http://purl.org/dc/terms/description> "Live working - Insulating hoses with fittings for use with hydraulic tools and equipment."@en ;
                                         <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#GeneralAdminShell> ;
@@ -4659,7 +4659,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                        <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                        <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_61512> ;
                                        <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                       <https://w3id.org/i40/sto#hasPublicationDate> "2015-12"@xsd:date ;
+                                       <https://w3id.org/i40/sto#hasPublicationDate> "2015-12"^^xsd:date ;
                                        <https://w3id.org/i40/sto#norm> "11898"^^xsd:string ;
                                        <http://purl.org/dc/terms/description> "Used mainly for Road vehicles Controller area network (CAN) Data link layer and physical signalling."@en ;
                                        <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Communication> ,
@@ -4673,7 +4673,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductionSystemEngineering> ;
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2012-02"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2012-02"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "13374"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Condition monitoring and diagnostics of machines -- Data processing, communication and presentation"@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Conditional_Monitoring> ;
@@ -4720,7 +4720,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductionSystemModelData> ;
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62541> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2017-07"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2017-07"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "14306"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "It provides the description of the structure and content for a binary file having the extension of .jt. A binary file with the .jt extension is generally referred to as a JT file. The JT format described in ISO 14306:2012 is used primarily in industrial use cases as the means for capturing and repurposing lightweight 3D product definition data"@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Engineering> ,
@@ -4745,7 +4745,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#ISO_13374> ,
                                                                           <https://w3id.org/i40/sto#ISO_19439> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2000-06"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2000-06"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "15704"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Identifies requirements for enterprise-reference architectures and methodologies"@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Other> ;
@@ -4760,7 +4760,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#ISO_15926> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2015-04"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2015-04"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "15746"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Automation systems and integration -- Integration of advanced process control and optimization capabilities for manufacturing systems."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Communication> ,
@@ -4781,7 +4781,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#ISO_ASTM_52915> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2003-12"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2003-12"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "15926"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Industrial automation systems and integration -- Integration of life-cycle data for process plants including oil and gas production facilities."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Configuration> ,
@@ -4797,7 +4797,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62890> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2013-04"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2013-04"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "16739"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#LifecycleStatus> ;
@@ -4814,7 +4814,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#ISO_15926> ,
                                                                           <https://w3id.org/i40/sto#ISO_ASTM_52915> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2004-11"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2004-11"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "18629"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "ISO 18629-1:2004 provides a general overview of the different series of parts of ISO 18629, which defines a process specification language aimed at identifying, formally defining and structuring the semantic concepts intrinsic to the capture and exchange of process information related to discrete manufacturing."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Configuration> ,
@@ -4835,7 +4835,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                        <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                        <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_61804> ;
                                        <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                       <https://w3id.org/i40/sto#hasPublicationDate> "2016-10"@xsd:date ;
+                                       <https://w3id.org/i40/sto#hasPublicationDate> "2016-10"^^xsd:date ;
                                        <https://w3id.org/i40/sto#norm> "18828"^^xsd:string ;
                                        <http://purl.org/dc/terms/description> "Industrial automation systems and integration -- Standardized procedures for production systems engineering."@en ;
                                        <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Engineering> ;
@@ -4890,7 +4890,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62541> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2014-01"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2014-01"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "22400"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "Automation systems and integration -- Key performance indicators (KPIs) for manufacturing operations management."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Conditional_Monitoring> ,
@@ -4910,7 +4910,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                         <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductCatalogData> ;
                                         <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                         <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                        <https://w3id.org/i40/sto#hasPublicationDate> "2010-02"@xsd:date ;
+                                        <https://w3id.org/i40/sto#hasPublicationDate> "2010-02"^^xsd:date ;
                                         <https://w3id.org/i40/sto#norm> "22745"^^xsd:string ;
                                         <http://purl.org/dc/terms/description> "ISO 22745-11:2010 provides guidelines that are recommended for the development of terminology for concepts in an open technical dictionary (OTD).Compliance with these guidelines is not required in order for a term or definition to be included in an OTD. These guidelines are provided as a framework for developers of industrial terminology to ensure that definitions are consistent and understandable. Terminology that complies with these guidelines will be marked as such in the OTD. This will allow a user to perform a search that filters terminology based on compliance with ISO 22745-11:2010."@en ;
                                         <https://w3id.org/i40/rami#hasRAMIHierarchyLevel> <https://w3id.org/i40/rami#Product> ;
@@ -4937,7 +4937,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                       <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductionSystemModelData> ;
                                       <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                       <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#ISO_10303> ;
-                                      <https://w3id.org/i40/sto#hasPublicationDate> "2017-07"@xsd:date ;
+                                      <https://w3id.org/i40/sto#hasPublicationDate> "2017-07"^^xsd:date ;
                                       <https://w3id.org/i40/sto#norm> "8062"^^xsd:string ;
                                       <http://purl.org/dc/terms/description> "Geometrical product specifications (GPS) -- Dimensional and geometrical tolerances for moulded parts -- General tolerances for castings using profile tolerancing in a general datum system"@en ;
                                       <https://w3id.org/i40/rami#hasRAMIHierarchyLevel> <https://w3id.org/i40/rami#Product> ;
@@ -4954,7 +4954,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                           <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62541> ,
                                                                                <https://w3id.org/i40/sto#ISO_14306> ;
                                           <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                          <https://w3id.org/i40/sto#hasPublicationDate> "2016-02"@xsd:date ;
+                                          <https://w3id.org/i40/sto#hasPublicationDate> "2016-02"^^xsd:date ;
                                           <https://w3id.org/i40/sto#norm> "52915"^^xsd:string ;
                                           <http://purl.org/dc/terms/description> "ISO ASTM 52915:2016 provides the specification for the Additive Manufacturing File Format (AMF), an interchange format to address the current and future needs of additive manufacturing technology."@en ;
                                           <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Engineering> ,
@@ -4980,7 +4980,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                             <https://w3id.org/i40/sto#isUtilizedIn> <https://w3id.org/i40/sto#ProductionSystemModelData> ;
                                             <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#ISO> ;
                                             <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#Industrial_Automation> ;
-                                            <https://w3id.org/i40/sto#hasPublicationDate> "2011-12"@xsd:date ;
+                                            <https://w3id.org/i40/sto#hasPublicationDate> "2011-12"^^xsd:date ;
                                             <https://w3id.org/i40/sto#norm> "14649"^^xsd:string ;
                                             <http://purl.org/dc/terms/description> """SO/TS 14649-201:2011 specifies the technology-specific machine tool description data elements needed as process data for manufacturing and machine characteristics. The machine tool descriptions covered in this schema are, initially, milling machines, machining centres, turning machines and multi-tasking machines.
         ISO/TS 14649-201:2011 is not intended to replace existing machine tool description standards, but to cover the specific needs of
