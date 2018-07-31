@@ -4161,7 +4161,7 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/i40/sto#publisher> <https://w3id.org/i40/sto#IEC> ;
                                      <https://w3id.org/i40/sto#relatedTo> <https://w3id.org/i40/sto#IEC_62443> ;
                                      <https://w3id.org/i40/sto#scope> <https://w3id.org/i40/sto#M2M> ;
-                                     <https://w3id.org/i40/sto#hasPublicationDate> "2011-12"@xsd:date ;
+                                     <https://w3id.org/i40/sto#hasPublicationDate> "2011-12"^^xsd:date ;
                                      <https://w3id.org/i40/sto#norm> "24760"^^xsd:string ;
                                      <http://purl.org/dc/terms/description> "ISO/IEC 24760: it defines terms for identity management, and also specifies core concepts of identity and identity management and their relationships. It is applicable to any information system that processes identity information. A bibliography of documents describing various aspects of identity information management is provided."@en ;
                                      <https://w3id.org/i40/rami#hasAdminShellSubmodel> <https://w3id.org/i40/rami#Safety> ,
