@@ -257,6 +257,13 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
 <http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty ;
+                                                rdfs:comment "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag."@en ,
+                                                             "The range of skos:prefLabel is the class of RDF plain literals."@en ,
+                                                             """skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise
+      disjoint properties."""@en ;
+                                                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                                                rdfs:label "preferred label"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "The preferred lexical label for a resource, in a given language."@en ;
                                                 rdfs:subPropertyOf rdfs:label .
 
 
@@ -269,7 +276,8 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#topConceptOf
-<http://www.w3.org/2004/02/skos/core#topConceptOf> rdf:type owl:AnnotationProperty .
+<http://www.w3.org/2004/02/skos/core#topConceptOf> rdf:type owl:AnnotationProperty ;
+                                                   rdfs:range <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
 
 
 ###  http://www.w3.org/2006/time#hasBeginning
@@ -281,7 +289,9 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2006/time#inXSDDateTime
-<http://www.w3.org/2006/time#inXSDDateTime> rdf:type owl:AnnotationProperty .
+<http://www.w3.org/2006/time#inXSDDateTime> rdf:type owl:AnnotationProperty ;
+                                            rdfs:range xsd:dateTime ;
+                                            rdfs:domain <http://www.w3.org/2006/time#Instant> .
 
 
 ###  http://www.w3.org/ns/odrl/2/action
@@ -725,7 +735,6 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/ids/core/inXSDDateTime
 <https://w3id.org/ids/core/inXSDDateTime> rdf:type owl:AnnotationProperty ;
-                                          rdfs:subPropertyOf <http://www.w3.org/2006/time#inXSDDateTime> ;
                                           rdfs:range xsd:dateTime ;
                                           rdfs:domain <https://w3id.org/ids/core/Instant> .
 
@@ -758,13 +767,11 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/ids/core/licenseDocument
 <https://w3id.org/ids/core/licenseDocument> rdf:type owl:AnnotationProperty ;
-                                            rdfs:subPropertyOf <http://purl.org/dc/terms/license> ;
                                             rdfs:range <https://w3id.org/ids/core/License> .
 
 
 ###  https://w3id.org/ids/core/licenseReference
 <https://w3id.org/ids/core/licenseReference> rdf:type owl:AnnotationProperty ;
-                                             rdfs:subPropertyOf <http://purl.org/dc/terms/license> ;
                                              rdfs:range xsd:anyURI ;
                                              rdfs:domain <https://w3id.org/ids/core/Contract> .
 
@@ -905,6 +912,11 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 <https://w3id.org/ids/core/unit> rdf:type owl:AnnotationProperty ;
                                  rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/unit> ;
                                  rdfs:range <https://w3id.org/ids/core/Unit> .
+
+
+###  https://w3id.org/ids/metamodel/labelPluralForm
+<https://w3id.org/ids/metamodel/labelPluralForm> rdf:type owl:AnnotationProperty ;
+                                                 rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#prefLabel> .
 
 
 #################################################################
@@ -1832,8 +1844,7 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  http://www.w3.org/2004/02/skos/core#topConceptOf
 <http://www.w3.org/2004/02/skos/core#topConceptOf> rdf:type owl:ObjectProperty ;
                                                    rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#inScheme> ;
-                                                   rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
-                                                   rdfs:range <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+                                                   rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> .
 
 
 ###  http://www.w3.org/ns/dcat#dataset
@@ -2197,7 +2208,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 <https://w3id.org/ids/core/coversLanguage> rdf:type owl:ObjectProperty ;
                                            rdfs:subPropertyOf <http://purl.org/dc/terms/language> ;
                                            rdfs:domain <https://w3id.org/ids/core/DataAsset> ;
-                                           rdfs:range <https://w3id.org/ids/core/Language> .
+                                           rdfs:range <https://w3id.org/ids/core/Language> ;
+                                           rdfs:comment "States the languages that are used by the content of the DataAsset."@en ;
+                                           rdfs:label "coversLanguage"@en .
 
 
 ###  https://w3id.org/ids/core/coversSpatial
@@ -2221,7 +2234,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/ids/core/customAttribute
 <https://w3id.org/ids/core/customAttribute> rdf:type owl:ObjectProperty ;
                                             rdfs:domain <https://w3id.org/ids/core/DataTransfer> ;
-                                            rdfs:range <https://w3id.org/ids/core/TransferAttribute> .
+                                            rdfs:range <https://w3id.org/ids/core/TransferAttribute> ;
+                                            rdfs:comment "Additional attributes that can be specified for a DataTransfer."@en ;
+                                            rdfs:label "customAttribute"@en .
 
 
 ###  https://w3id.org/ids/core/dataRequestAction
@@ -2271,13 +2286,17 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/ids/core/fault
 <https://w3id.org/ids/core/fault> rdf:type owl:ObjectProperty ;
                                   rdfs:domain <https://w3id.org/ids/core/Operation> ;
-                                  rdfs:range <https://w3id.org/ids/core/Parameter> .
+                                  rdfs:range <https://w3id.org/ids/core/Parameter> ;
+                                  rdfs:comment "Holds information when an Operation has failed."@en ;
+                                  rdfs:label "fault"@en .
 
 
 ###  https://w3id.org/ids/core/geoPoint
 <https://w3id.org/ids/core/geoPoint> rdf:type owl:ObjectProperty ;
                                      rdfs:domain <https://w3id.org/ids/core/BoundingPolygon> ;
-                                     rdfs:range <https://w3id.org/ids/core/GeoPoint> .
+                                     rdfs:range <https://w3id.org/ids/core/GeoPoint> ;
+                                     rdfs:comment "Refers to a GeoPoint that is member of a BoundingPolygon."@en ;
+                                     rdfs:label "geoPoint"@en .
 
 
 ###  https://w3id.org/ids/core/hashFunction
@@ -2301,7 +2320,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/ids/core/input
 <https://w3id.org/ids/core/input> rdf:type owl:ObjectProperty ;
                                   rdfs:domain <https://w3id.org/ids/core/Operation> ;
-                                  rdfs:range <https://w3id.org/ids/core/Parameter> .
+                                  rdfs:range <https://w3id.org/ids/core/Parameter> ;
+                                  rdfs:comment "Reference to an input Parameter (optionaly) used by the Operation."@en ;
+                                  rdfs:label "input"@en .
 
 
 ###  https://w3id.org/ids/core/inputGroup
@@ -2357,13 +2378,21 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 
 ###  https://w3id.org/ids/core/licenseDocument
 <https://w3id.org/ids/core/licenseDocument> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://purl.org/dc/terms/license> ;
                                             rdfs:domain <https://w3id.org/ids/core/Contract> .
+
+
+###  https://w3id.org/ids/core/licenseReference
+<https://w3id.org/ids/core/licenseReference> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf <http://purl.org/dc/terms/license> .
 
 
 ###  https://w3id.org/ids/core/lifecycleActivity
 <https://w3id.org/ids/core/lifecycleActivity> rdf:type owl:ObjectProperty ;
                                               rdfs:domain <https://w3id.org/ids/core/ManagedEntity> ;
-                                              rdfs:range <https://w3id.org/ids/core/Activity> .
+                                              rdfs:range <https://w3id.org/ids/core/Activity> ;
+                                              rdfs:comment "Activity that occurs during the lifecycle of the InfrastructureComponent."@en ;
+                                              rdfs:label "lifecycleActivity"@en .
 
 
 ###  https://w3id.org/ids/core/localDataConfidentiality
@@ -2386,7 +2415,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 <https://w3id.org/ids/core/mandatoryInput> rdf:type owl:ObjectProperty ;
                                            rdfs:subPropertyOf <https://w3id.org/ids/core/input> ;
                                            rdfs:domain <https://w3id.org/ids/core/Operation> ;
-                                           rdfs:range <https://w3id.org/ids/core/Parameter> .
+                                           rdfs:range <https://w3id.org/ids/core/Parameter> ;
+                                           rdfs:comment "Reference to an input Parameter required by the Operation."@en ;
+                                           rdfs:label "mandatoryInput"@en .
 
 
 ###  https://w3id.org/ids/core/mandatoryInputGroup
@@ -2400,7 +2431,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/ids/core/mandatoryOutput
 <https://w3id.org/ids/core/mandatoryOutput> rdf:type owl:ObjectProperty ;
                                             rdfs:domain <https://w3id.org/ids/core/Operation> ;
-                                            rdfs:range <https://w3id.org/ids/core/Parameter> .
+                                            rdfs:range <https://w3id.org/ids/core/Parameter> ;
+                                            rdfs:comment "Holds the result of an Operation."@en ;
+                                            rdfs:label "mandatoryOutput"@en .
 
 
 ###  https://w3id.org/ids/core/mediaType
@@ -2463,13 +2496,17 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/ids/core/output
 <https://w3id.org/ids/core/output> rdf:type owl:ObjectProperty ;
                                    rdfs:domain <https://w3id.org/ids/core/Operation> ;
-                                   rdfs:range <https://w3id.org/ids/core/Parameter> .
+                                   rdfs:range <https://w3id.org/ids/core/Parameter> ;
+                                   rdfs:comment "Holds the result of an Operation."@en ;
+                                   rdfs:label "output"@en .
 
 
 ###  https://w3id.org/ids/core/paramGroupMember
 <https://w3id.org/ids/core/paramGroupMember> rdf:type owl:ObjectProperty ;
                                              rdfs:domain <https://w3id.org/ids/core/ParameterGroup> ;
-                                             rdfs:range <https://w3id.org/ids/core/Parameter> .
+                                             rdfs:range <https://w3id.org/ids/core/Parameter> ;
+                                             rdfs:comment "Declares a member of a ParameterGroup."@en ;
+                                             rdfs:label "paramGroupMember"@en .
 
 
 ###  https://w3id.org/ids/core/paramGroupingOperator
@@ -2691,7 +2728,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 <https://w3id.org/ids/core/theme> rdf:type owl:ObjectProperty ;
                                   rdfs:subPropertyOf <http://www.w3.org/ns/dcat#theme> ;
                                   rdfs:domain <https://w3id.org/ids/core/DataAsset> ;
-                                  rdfs:range <https://w3id.org/ids/core/ContentCategory> .
+                                  rdfs:range <https://w3id.org/ids/core/ContentCategory> ;
+                                  rdfs:comment "Links to a taxonomy entry point that categorizes content-related coverage of the DataAsset."@en ;
+                                  rdfs:label "theme"@en .
 
 
 ###  https://w3id.org/ids/core/tokenFormat
@@ -2718,7 +2757,9 @@ rdfs:subClassOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/ids/core/variant
 <https://w3id.org/ids/core/variant> rdf:type owl:ObjectProperty ;
                                     rdfs:domain <https://w3id.org/ids/core/Resource> ;
-                                    rdfs:range <https://w3id.org/ids/core/Resource> .
+                                    rdfs:range <https://w3id.org/ids/core/Resource> ;
+                                    rdfs:comment "Equivalent variant of given Resource, e.g. a translation."@en ;
+                                    rdfs:label "variant"@en .
 
 
 ###  https://w3id.org/ids/metamodel/constraint
@@ -2905,9 +2946,7 @@ Patterns (4) and (5) should be used instead when a constraint or a selection is 
 
 
 ###  http://www.w3.org/2006/time#inXSDDateTime
-<http://www.w3.org/2006/time#inXSDDateTime> rdf:type owl:DatatypeProperty ;
-                                            rdfs:domain <http://www.w3.org/2006/time#Instant> ;
-                                            rdfs:range xsd:dateTime .
+<http://www.w3.org/2006/time#inXSDDateTime> rdf:type owl:DatatypeProperty .
 
 
 ###  http://www.w3.org/ns/dcat#byteSize
@@ -3151,7 +3190,8 @@ Patterns (4) and (5) should be used instead when a constraint or a selection is 
 
 
 ###  https://w3id.org/ids/core/inXSDDateTime
-<https://w3id.org/ids/core/inXSDDateTime> rdf:type owl:DatatypeProperty .
+<https://w3id.org/ids/core/inXSDDateTime> rdf:type owl:DatatypeProperty ;
+                                          rdfs:subPropertyOf <http://www.w3.org/2006/time#inXSDDateTime> .
 
 
 ###  https://w3id.org/ids/core/invalidated
@@ -3166,7 +3206,9 @@ Patterns (4) and (5) should be used instead when a constraint or a selection is 
 <https://w3id.org/ids/core/keyword> rdf:type owl:DatatypeProperty ;
                                     rdfs:subPropertyOf <http://www.w3.org/ns/dcat#keyword> ;
                                     rdfs:domain <https://w3id.org/ids/core/DataAsset> ;
-                                    rdfs:range xsd:anyURI .
+                                    rdfs:range xsd:anyURI ;
+                                    rdfs:comment "Links to an item in a flat list of controlled keywords that describe content-related coverage of the DataAsset."@en ;
+                                    rdfs:label "keyword"@en .
 
 
 ###  https://w3id.org/ids/core/latitude
@@ -3298,7 +3340,9 @@ Patterns (4) and (5) should be used instead when a constraint or a selection is 
 ###  https://w3id.org/ids/core/supportedMetadataVersion
 <https://w3id.org/ids/core/supportedMetadataVersion> rdf:type owl:DatatypeProperty ;
                                                      rdfs:domain <https://w3id.org/ids/core/InfrastructureComponent> ;
-                                                     rdfs:range xsd:anyURI .
+                                                     rdfs:range xsd:anyURI ;
+                                                     rdfs:comment "The versions of the Information Model that are supported by the InfrastructureComponent."@en ;
+                                                     rdfs:label "supportedMetadataVersion"@en .
 
 
 ###  https://w3id.org/ids/core/termsOfUse
@@ -3386,17 +3430,13 @@ Patterns (4) and (5) should be used instead when a constraint or a selection is 
 
 ###  https://w3id.org/ids/metamodel/labelPluralForm
 <https://w3id.org/ids/metamodel/labelPluralForm> rdf:type owl:DatatypeProperty ;
-                                                 rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#prefLabel> ;
                                                  rdfs:domain rdfs:Resource ;
-                                                 rdfs:range rdf:PlainLiteral ;
-                                                 rdfs:comment "The preferred lexical label for a resource, in plural form in a given language."@en ;
-                                                 rdfs:label "labelPluralForm"@en .
+                                                 rdfs:range rdf:PlainLiteral .
 
 
 #################################################################
 #    Classes
 #################################################################
-
 
 ###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice
 <http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice> rdf:type owl:Class .
@@ -5975,12 +6015,17 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/Action
 <https://w3id.org/ids/core/Action> rdf:type owl:Class ;
-                                   rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Action> .
+                                   rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Action> ;
+                                   rdfs:comment "A thing one might be permitted to do or prohibited from doing to something."@en ;
+                                   rdfs:label "Action"@en .
 
 
 ###  https://w3id.org/ids/core/Activity
 <https://w3id.org/ids/core/Activity> rdf:type owl:Class ;
-                                     rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> .
+                                     rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ;
+                                     rdfs:comment "Something that occurs over a period of time and acts upon or with entities."@en ;
+                                     rdfs:label "Activity"@en ;
+                                     rdfs:seeAlso <http://www.ddialliance.org/Specification/DDI-CV/LifecycleEventType_1.0.html> .
 
 
 ###  https://w3id.org/ids/core/Agent
@@ -6025,12 +6070,16 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/AppStore
 <https://w3id.org/ids/core/AppStore> rdf:type owl:Class ;
-                                     rdfs:subClassOf <https://w3id.org/ids/core/Connector> .
+                                     rdfs:subClassOf <https://w3id.org/ids/core/Connector> ;
+                                     rdfs:comment "Secure platform for distributing Data Apps."@en ;
+                                     rdfs:label "App Store"@en .
 
 
 ###  https://w3id.org/ids/core/Applicant
 <https://w3id.org/ids/core/Applicant> rdf:type owl:Class ;
-                                      rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                      rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                      rdfs:comment "Organization formally applying for being certified by the Certification Body."@en ;
+                                      rdfs:label "Applicant"@en .
 
 
 ###  https://w3id.org/ids/core/Application
@@ -6042,7 +6091,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/ids/core/Artifact
 <https://w3id.org/ids/core/Artifact> rdf:type owl:Class ;
                                      rdfs:subClassOf <http://www.w3.org/ns/dcat#Distribution> ,
-                                                     <https://w3id.org/ids/core/Communicable> .
+                                                     <https://w3id.org/ids/core/Communicable> ;
+                                     rdfs:comment "Resource Representation materialized in a file, i.e. possessing characteristics like file name, size, creation date etc."@en ;
+                                     rdfs:label "Artifact"@en .
 
 
 ###  https://w3id.org/ids/core/Audio
@@ -6054,32 +6105,46 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/AuditLogging
-<https://w3id.org/ids/core/AuditLogging> rdf:type owl:Class .
+<https://w3id.org/ids/core/AuditLogging> rdf:type owl:Class ;
+                                         rdfs:comment "The class of audit logging strategies." ;
+                                         rdfs:label "AuditLogging"@en .
 
 
 ###  https://w3id.org/ids/core/AuthInfo
-<https://w3id.org/ids/core/AuthInfo> rdf:type owl:Class .
+<https://w3id.org/ids/core/AuthInfo> rdf:type owl:Class ;
+                                     rdfs:comment "Holds authentication information so that connections to the Connector's data offerings can be establised."@en ;
+                                     rdfs:label "AuthInfo"@en .
 
 
 ###  https://w3id.org/ids/core/AuthStandard
-<https://w3id.org/ids/core/AuthStandard> rdf:type owl:Class .
+<https://w3id.org/ids/core/AuthStandard> rdf:type owl:Class ;
+                                         rdfs:comment "The class of authentication standards that may be supported by Connectors." ;
+                                         rdfs:label "AuthStandard"@en .
 
 
 ###  https://w3id.org/ids/core/AuthenticationSupport
-<https://w3id.org/ids/core/AuthenticationSupport> rdf:type owl:Class .
+<https://w3id.org/ids/core/AuthenticationSupport> rdf:type owl:Class ;
+                                                  rdfs:comment "The class of support levels for authentication." ;
+                                                  rdfs:label "AuthenticationSupport"@en .
 
 
 ###  https://w3id.org/ids/core/AuthorizationToken
-<https://w3id.org/ids/core/AuthorizationToken> rdf:type owl:Class .
+<https://w3id.org/ids/core/AuthorizationToken> rdf:type owl:Class ;
+                                               rdfs:comment "Holds authentication information so that connections to the Connector's data offerings can be establised."@en ;
+                                               rdfs:label "Authorization Token."@en .
 
 
 ###  https://w3id.org/ids/core/AuthorizationTokenFormat
-<https://w3id.org/ids/core/AuthorizationTokenFormat> rdf:type owl:Class .
+<https://w3id.org/ids/core/AuthorizationTokenFormat> rdf:type owl:Class ;
+                                                     rdfs:comment "Authorization Token Format."@en ;
+                                                     rdfs:label "Authorization token format"@en .
 
 
 ###  https://w3id.org/ids/core/BaseConnector
 <https://w3id.org/ids/core/BaseConnector> rdf:type owl:Class ;
-                                          rdfs:subClassOf <https://w3id.org/ids/core/Connector> .
+                                          rdfs:subClassOf <https://w3id.org/ids/core/Connector> ;
+                                          rdfs:comment "Implementation of the Connector specification providing only restricted security capabilities."@en ;
+                                          rdfs:label "Base Connector"@en .
 
 
 ###  https://w3id.org/ids/core/BinaryOperator
@@ -6091,23 +6156,31 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/BoundingPolygon
 <https://w3id.org/ids/core/BoundingPolygon> rdf:type owl:Class ;
-                                            rdfs:subClassOf <https://w3id.org/ids/core/Geometry> .
+                                            rdfs:subClassOf <https://w3id.org/ids/core/Geometry> ;
+                                            rdfs:comment "Defines an area of interest as a set of connected points."@en ;
+                                            rdfs:label "BoundingPolygon"@en .
 
 
 ###  https://w3id.org/ids/core/Broker
 <https://w3id.org/ids/core/Broker> rdf:type owl:Class ;
-                                   rdfs:subClassOf <https://w3id.org/ids/core/Connector> .
+                                   rdfs:subClassOf <https://w3id.org/ids/core/Connector> ;
+                                   rdfs:comment "Broker holding an index of published data endpoints."@en ;
+                                   rdfs:label "Broker"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerDataMessage
 <https://w3id.org/ids/core/BrokerDataMessage> rdf:type owl:Class ;
-                                              rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> .
+                                              rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> ;
+                                              rdfs:comment "The class of all messages intended for data transfer to/from a Broker." ;
+                                              rdfs:label "BrokerDataMessage"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerDataRequest
 <https://w3id.org/ids/core/BrokerDataRequest> rdf:type owl:Class ;
                                               rdfs:subClassOf <https://w3id.org/ids/core/BrokerDataMessage> ,
-                                                              <https://w3id.org/ids/core/BrokerRequestMessage> .
+                                                              <https://w3id.org/ids/core/BrokerRequestMessage> ;
+                                              rdfs:comment "The class of all messages that represent data requests to a Broker." ;
+                                              rdfs:label "BrokerDataRequest"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerDataRequestAction
@@ -6126,12 +6199,16 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/BrokerMessage
 <https://w3id.org/ids/core/BrokerMessage> rdf:type owl:Class ;
-                                          rdfs:subClassOf <https://w3id.org/ids/core/Message> .
+                                          rdfs:subClassOf <https://w3id.org/ids/core/Message> ;
+                                          rdfs:comment "The class of all messages to interact with a Broker." ;
+                                          rdfs:label "BrokerMessage"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerQueryMessage
 <https://w3id.org/ids/core/BrokerQueryMessage> rdf:type owl:Class ;
-                                               rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> .
+                                               rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> ;
+                                               rdfs:comment "The class of all messages that query the broker for data." ;
+                                               rdfs:label "BrokerQueryMessage"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerQueryMessageScope
@@ -6143,7 +6220,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/ids/core/BrokerQueryRequest
 <https://w3id.org/ids/core/BrokerQueryRequest> rdf:type owl:Class ;
                                                rdfs:subClassOf <https://w3id.org/ids/core/BrokerQueryMessage> ,
-                                                               <https://w3id.org/ids/core/BrokerRequestMessage> .
+                                                               <https://w3id.org/ids/core/BrokerRequestMessage> ;
+                                               rdfs:comment "The class of all messages that represent query requests to a Broker." ;
+                                               rdfs:label "BrokerQueryRequest"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerQueryRequestAction
@@ -6162,23 +6241,31 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/BrokerRequestMessage
 <https://w3id.org/ids/core/BrokerRequestMessage> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> .
+                                                 rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> ;
+                                                 rdfs:comment "The class of all messages that represent requests to a Broker." ;
+                                                 rdfs:label "BrokerRequestMessage"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerResponseMessage
 <https://w3id.org/ids/core/BrokerResponseMessage> rdf:type owl:Class ;
-                                                  rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> .
+                                                  rdfs:subClassOf <https://w3id.org/ids/core/BrokerMessage> ;
+                                                  rdfs:comment "The class of all messages that represent responses of a Broker." ;
+                                                  rdfs:label "BrokerResponseMessage"@en .
 
 
 ###  https://w3id.org/ids/core/BrokerServiceProvider
 <https://w3id.org/ids/core/BrokerServiceProvider> rdf:type owl:Class ;
-                                                  rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                                  rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                                  rdfs:comment "Intermediary managing a metadata repository that provides information about the Data Sources available in the Industrial Data Space; multiple Broker Service Providers may be around at the same time, maintaining references to different, domain-specific subsets of Data Endpoints."@en ;
+                                                  rdfs:label "Broker Service Provider"@en .
 
 
 ###  https://w3id.org/ids/core/Catalog
 <https://w3id.org/ids/core/Catalog> rdf:type owl:Class ;
                                     rdfs:subClassOf <http://www.w3.org/ns/dcat#Catalog> ,
-                                                    <https://w3id.org/ids/core/InfrastructureComponent> .
+                                                    <https://w3id.org/ids/core/InfrastructureComponent> ;
+                                    rdfs:comment "Curated collection of metadata about Resources, Participants, Connectors and further IDS entities"@en ;
+                                    rdfs:label "Catalog"@en .
 
 
 ###  https://w3id.org/ids/core/CatalogFilterMessage
@@ -6204,31 +6291,44 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/Certification
 <https://w3id.org/ids/core/Certification> rdf:type owl:Class ;
-                                          rdfs:subClassOf <https://w3id.org/ids/core/ManagedEntity> .
+                                          rdfs:subClassOf <https://w3id.org/ids/core/ManagedEntity> ;
+                                          rdfs:comment "Abstract certification of compliance according to given Certification Scheme." ;
+                                          rdfs:label "Certification"@en .
 
 
 ###  https://w3id.org/ids/core/CertificationAuthority
 <https://w3id.org/ids/core/CertificationAuthority> rdf:type owl:Class ;
-                                                   rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                                   rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                                   rdfs:comment "Trusted third-party entity issuing digital certificates (e.g., x509 certificates); may host services to validate certificates issued."@en ;
+                                                   rdfs:label "Certification Authority"@en .
 
 
 ###  https://w3id.org/ids/core/CertificationBody
 <https://w3id.org/ids/core/CertificationBody> rdf:type owl:Class ;
-                                              rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                              rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                              rdfs:comment "Governance body certifying components and entities seeking admission to the Industrial Data Space; aside from having the final word on granting or denying a certificate, it is responsible for maintaining the Certification Scheme (including its catalog of requirements), for overseeing and approval of Evaluation Facilities, and for ensuring compatibility of evaluation procedures carried out by different Evaluation Facilities."@en ;
+                                              rdfs:label "Certification Body"@en .
 
 
 ###  https://w3id.org/ids/core/CertificationScheme
-<https://w3id.org/ids/core/CertificationScheme> rdf:type owl:Class .
+<https://w3id.org/ids/core/CertificationScheme> rdf:type owl:Class ;
+                                                rdfs:comment "Scheme defining the processes, roles, targets, and criteria involved in the certification of components and entities; maintained by the Certification Body." ;
+                                                rdfs:label "Certification Scheme"@en .
 
 
 ###  https://w3id.org/ids/core/ClearingHouse
 <https://w3id.org/ids/core/ClearingHouse> rdf:type owl:Class ;
-                                          rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                          rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                          rdfs:comment "Intermediary providing clearing and settlement services for all financial and data exchange transactions within the Industrial Data Space."@en ;
+                                          rdfs:label "Clearing House"@en .
 
 
 ###  https://w3id.org/ids/core/Collection
 <https://w3id.org/ids/core/Collection> rdf:type owl:Class ;
-                                       rdfs:subClassOf <https://w3id.org/ids/core/Structure> .
+                                       rdfs:subClassOf <https://w3id.org/ids/core/Structure> ;
+                                       rdfs:comment "Group of entities supporting particular access operations based on the concrete subclass."@en ;
+                                       rdfs:label "Collection"@en ;
+                                       rdfs:seeAlso <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html> .
 
 
 ###  https://w3id.org/ids/core/CommInterface
@@ -6236,7 +6336,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Communicable
-<https://w3id.org/ids/core/Communicable> rdf:type owl:Class .
+<https://w3id.org/ids/core/Communicable> rdf:type owl:Class ;
+                                         rdfs:comment "Data that is capable of being (digitally) communicated via a Data Endpoint."@en ;
+                                         rdfs:label "Communicable"@en .
 
 
 ###  https://w3id.org/ids/core/ComponentCertification
@@ -6247,7 +6349,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Connector
-<https://w3id.org/ids/core/Connector> rdf:type owl:Class  .
+<https://w3id.org/ids/core/Connector> rdf:type owl:Class ;
+                                      rdfs:comment "Dedicated communication server for sending and receiving data in compliance with the Connector specification. There are different types of Connectors according to provided capabilities."@en ;
+                                      rdfs:label "Connector"@en .
 
 
 ###  https://w3id.org/ids/core/ConnectorIdentifier
@@ -6266,16 +6370,28 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/ContentCategory
 <https://w3id.org/ids/core/ContentCategory> rdf:type owl:Class ;
-                                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> .
+                                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                            rdfs:comment "Class of categories for classification of Resources." ;
+                                            rdfs:label "Content Category"@en ;
+                                            rdfs:seeAlso <https://github.com/w3c/dxwg/wiki/Data-aspects---semantics> ,
+                                                         <https://www.w3.org/TR/vocab-dcat/#Property:dataset_theme> .
 
 
 ###  https://w3id.org/ids/core/ContentType
-<https://w3id.org/ids/core/ContentType> rdf:type owl:Class .
+<https://w3id.org/ids/core/ContentType> rdf:type owl:Class ;
+                                        rdfs:comment "Nature of a Digital Content providing hints on its usage, e.g. listing an Audio, navigating a Structure or accessing a List by an index." ;
+                                        rdfs:label "Content type"@en ;
+                                        rdfs:seeAlso <http://www.ontodm.com/doku.php?id=ontodt> ,
+                                                     <https://github.com/twosixlabs/icas-ontology/blob/master/ontology/mime.ttl> ,
+                                                     <https://schema.org/DataType> ,
+                                                     <https://schema.org/additionalType> .
 
 
 ###  https://w3id.org/ids/core/Contract
 <https://w3id.org/ids/core/Contract> rdf:type owl:Class ;
-                                     rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Policy> .
+                                     rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Policy> ;
+                                     rdfs:comment "Legal agreement and selection of a particular resource configuration." ;
+                                     rdfs:label "Contract"@en .
 
 
 ###  https://w3id.org/ids/core/ContractAgreementMessage
@@ -6310,26 +6426,36 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/DataApp
 <https://w3id.org/ids/core/DataApp> rdf:type owl:Class ;
-                                    rdfs:subClassOf <https://w3id.org/ids/core/Resource> .
+                                    rdfs:subClassOf <https://w3id.org/ids/core/Resource> ;
+                                    rdfs:comment "Self-contained, self-descriptive software package that is distributed via the App Store and deployed inside a Connector; provides access to data and data processing capa­bilities; the interface of a Data App is semantically described by the IDS Information Model."@en ;
+                                    rdfs:label "DataApp"@en .
 
 
 ###  https://w3id.org/ids/core/DataAsset
 <https://w3id.org/ids/core/DataAsset> rdf:type owl:Class ;
-                                      rdfs:subClassOf <https://w3id.org/ids/core/Resource> .
+                                      rdfs:subClassOf <https://w3id.org/ids/core/Resource> ;
+                                      rdfs:comment "Resource exchanged via Data Endpoints of the Connector. Data Assets are expected to be focused, homogeneous, and consistent over time with regard to granularity, coverage, context, data structure, and conceptual classification"@en ;
+                                      rdfs:label "DataAsset"@en .
 
 
 ###  https://w3id.org/ids/core/DataConsumer
 <https://w3id.org/ids/core/DataConsumer> rdf:type owl:Class ;
-                                         rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                         rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                         rdfs:comment "Core participant in the Industrial Data Space requesting and using data provided by a Data Provider."@en ;
+                                         rdfs:label "Data Consumer"@en .
 
 
 ###  https://w3id.org/ids/core/DataExchangeAgreement
-<https://w3id.org/ids/core/DataExchangeAgreement> rdf:type owl:Class .
+<https://w3id.org/ids/core/DataExchangeAgreement> rdf:type owl:Class ;
+                                                  rdfs:comment "Contractual agreement between a Data Provider and a Data Consumer regarding the exchange of data in the Industrial Data Space." ;
+                                                  rdfs:label "DataExchangeAgreement"@en .
 
 
 ###  https://w3id.org/ids/core/DataProvider
 <https://w3id.org/ids/core/DataProvider> rdf:type owl:Class ;
-                                         rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                         rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                         rdfs:comment "Core participant exposing Data Sources via a Connector; a Data Provider may be an enterprise or other organization, a data marketplace, an individual, or a “smart thing”."@en ;
+                                         rdfs:label "Data Provider"@en .
 
 
 ###  https://w3id.org/ids/core/DataService
@@ -6341,26 +6467,37 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/DataSink
 <https://w3id.org/ids/core/DataSink> rdf:type owl:Class ;
-                                     rdfs:subClassOf <https://w3id.org/ids/core/Endpoint> .
+                                     rdfs:subClassOf <https://w3id.org/ids/core/Endpoint> ;
+                                     rdfs:comment "Endpoint consuming data supplied by a Data Provider."@en ;
+                                     rdfs:label "Data Sink"@en .
 
 
 ###  https://w3id.org/ids/core/DataSource
 <https://w3id.org/ids/core/DataSource> rdf:type owl:Class ;
-                                       rdfs:subClassOf <https://w3id.org/ids/core/Endpoint> .
+                                       rdfs:subClassOf <https://w3id.org/ids/core/Endpoint> ;
+                                       rdfs:comment "Endpoint exposing data for being retrieved or subscribed to by a Data Consumer."@en ;
+                                       rdfs:label "Data Source"@en .
 
 
 ###  https://w3id.org/ids/core/DataSovereign
 <https://w3id.org/ids/core/DataSovereign> rdf:type owl:Class ;
-                                          rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                          rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                          rdfs:comment "Core participant owning the legal rights for, and having complete control over, the data it makes available in the Industrial Data Space; defines the terms and conditions of use of its data."@en ;
+                                          rdfs:label "Data Sovereign"@en ;
+                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Data Owner"@en .
 
 
 ###  https://w3id.org/ids/core/DataSovereignty
-<https://w3id.org/ids/core/DataSovereignty> rdf:type owl:Class .
+<https://w3id.org/ids/core/DataSovereignty> rdf:type owl:Class ;
+                                            rdfs:comment "The capability of an entity (natural person or corporate) of being entirely self-determined with regards to its data."@en ;
+                                            rdfs:label "DataSovereignty"@en .
 
 
 ###  https://w3id.org/ids/core/DataTransfer
 <https://w3id.org/ids/core/DataTransfer> rdf:type owl:Class ;
-                                         rdfs:subClassOf <https://w3id.org/ids/core/Message> .
+                                         rdfs:subClassOf <https://w3id.org/ids/core/Message> ;
+                                         rdfs:comment "The class of resources that describe a data transfer on the IDS."@en ;
+                                         rdfs:label "DataTransfer"@en .
 
 
 ###  https://w3id.org/ids/core/DataUsageControlSupport
@@ -6371,7 +6508,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/DataUser
 <https://w3id.org/ids/core/DataUser> rdf:type owl:Class ;
-                                     rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                     rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                     rdfs:comment "Role of a Participant that has the legal right to use the data of a Data Sovereign as specified by the usage policy."@en ;
+                                     rdfs:label "Data User"@en .
 
 
 ###  https://w3id.org/ids/core/DeleteAction
@@ -6383,7 +6522,10 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/DigitalContent
-<https://w3id.org/ids/core/DigitalContent> rdf:type owl:Class .
+<https://w3id.org/ids/core/DigitalContent> rdf:type owl:Class ;
+                                           rdfs:comment "Content available in a particular digital Serialization."@en ;
+                                           rdfs:label "Digital content"@en ;
+                                           rdfs:seeAlso <https://en.wikipedia.org/wiki/Digital_content> .
 
 
 ###  https://w3id.org/ids/core/DistributeAction
@@ -6411,7 +6553,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Endpoint
-<https://w3id.org/ids/core/Endpoint> rdf:type owl:Class .
+<https://w3id.org/ids/core/Endpoint> rdf:type owl:Class ;
+                                     rdfs:comment "Data exchange point for publication (Data Source) and/or consumption (Data Sink) of Communicable objects."@en ;
+                                     rdfs:label "Endpoint"@en .
 
 
 ###  https://w3id.org/ids/core/EntityCoveredByDataRequest
@@ -6422,22 +6566,30 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/GeoFeature
 <https://w3id.org/ids/core/GeoFeature> rdf:type owl:Class ;
-                                       rdfs:subClassOf <https://w3id.org/ids/core/Location> .
+                                       rdfs:subClassOf <https://w3id.org/ids/core/Location> ;
+                                       rdfs:comment "A location identified by a geonames identifier."@en ;
+                                       rdfs:label "GeoFeature"@en .
 
 
 ###  https://w3id.org/ids/core/GeoPoint
 <https://w3id.org/ids/core/GeoPoint> rdf:type owl:Class ;
-                                     rdfs:subClassOf <https://w3id.org/ids/core/Location> .
+                                     rdfs:subClassOf <https://w3id.org/ids/core/Location> ;
+                                     rdfs:comment "A location identified by geo coordinates."@en ;
+                                     rdfs:label "GeoPoint"@en .
 
 
 ###  https://w3id.org/ids/core/Geometry
 <https://w3id.org/ids/core/Geometry> rdf:type owl:Class ;
                                      rdfs:subClassOf <http://www.w3.org/ns/locn#Geometry> ,
-                                                     <https://w3id.org/ids/core/Location> .
+                                                     <https://w3id.org/ids/core/Location> ;
+                                     rdfs:comment "Geometrical shape indicating a spatial area of interest."@en ;
+                                     rdfs:label "Geometry"@en .
 
 
 ###  https://w3id.org/ids/core/Governance
-<https://w3id.org/ids/core/Governance> rdf:type owl:Class .
+<https://w3id.org/ids/core/Governance> rdf:type owl:Class ;
+                                       rdfs:comment "Concept defining the rights and duties ('rules of the game') for formal data management, ensuring quality and trust throughout the Industrial Data Space; mission critical to the Industrial Data Space, as a central supervisory authority is missing."@en ;
+                                       rdfs:label "Governance"@en .
 
 
 ###  https://w3id.org/ids/core/GrantUseAction
@@ -6488,12 +6640,16 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Identifier
-<https://w3id.org/ids/core/Identifier> rdf:type owl:Class .
+<https://w3id.org/ids/core/Identifier> rdf:type owl:Class ;
+                                       rdfs:comment "Abstract notion of a (globally) unique Identifier, e.g. a URI."@en ;
+                                       rdfs:label "Identifier"@en .
 
 
 ###  https://w3id.org/ids/core/IdentityProvider
 <https://w3id.org/ids/core/IdentityProvider> rdf:type owl:Class ;
-                                             rdfs:subClassOf <https://w3id.org/ids/core/Role> .
+                                             rdfs:subClassOf <https://w3id.org/ids/core/Role> ;
+                                             rdfs:comment "Intermediary offering services to create, maintain, manage and validate identity information of and for participants in the Industrial Data Space."@en ;
+                                             rdfs:label "Identity Provider"@en .
 
 
 ###  https://w3id.org/ids/core/Image
@@ -6505,7 +6661,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/IndustrialClassification
-<https://w3id.org/ids/core/IndustrialClassification> rdf:type owl:Class .
+<https://w3id.org/ids/core/IndustrialClassification> rdf:type owl:Class ;
+                                                     rdfs:comment "The class of industries that can be distinguished by their activities." ;
+                                                     rdfs:label "Industrial classification"@en .
 
 
 ###  https://w3id.org/ids/core/IndustrialClassificationISIC
@@ -6517,7 +6675,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/InfrastructureComponent
 <https://w3id.org/ids/core/InfrastructureComponent> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://w3id.org/ids/core/ManagedEntity> .
+                                                    rdfs:subClassOf <https://w3id.org/ids/core/ManagedEntity> ;
+                                                    rdfs:comment "The class of all infrastructure components of the IDS." ;
+                                                    rdfs:label "InfrastructureComponent"@en .
 
 
 ###  https://w3id.org/ids/core/Instant
@@ -6549,7 +6709,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/ids/core/Interval
 <https://w3id.org/ids/core/Interval> rdf:type owl:Class ;
                                      rdfs:subClassOf <http://www.w3.org/2006/time#Interval> ,
-                                                     <https://w3id.org/ids/core/TemporalEntity> .
+                                                     <https://w3id.org/ids/core/TemporalEntity> ;
+                                     rdfs:comment "A temporal entity with non-zero extent or duration, i.e. for which the value of the beginning and end are different."@en ;
+                                     rdfs:label "Interval"@en .
 
 
 ###  https://w3id.org/ids/core/InvokeOperationAction
@@ -6589,17 +6751,23 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/LocalDataConfidentiality
-<https://w3id.org/ids/core/LocalDataConfidentiality> rdf:type owl:Class .
+<https://w3id.org/ids/core/LocalDataConfidentiality> rdf:type owl:Class ;
+                                                     rdfs:comment "The class of support levels for local data confidentiality." ;
+                                                     rdfs:label "idsLocalDataConfidentiality"@en .
 
 
 ###  https://w3id.org/ids/core/Location
 <https://w3id.org/ids/core/Location> rdf:type owl:Class ;
                                      rdfs:subClassOf <http://purl.org/dc/terms/Location> ,
-                                                     <https://w3id.org/ids/core/SpatialEntity> .
+                                                     <https://w3id.org/ids/core/SpatialEntity> ;
+                                     rdfs:comment "Class of all locations on Earth."@en ;
+                                     rdfs:label "Location"@en .
 
 
 ###  https://w3id.org/ids/core/ManagedEntity
-<https://w3id.org/ids/core/ManagedEntity> rdf:type owl:Class .
+<https://w3id.org/ids/core/ManagedEntity> rdf:type owl:Class ;
+                                          rdfs:comment "The class of all individuals that are subject of a lifecycle which needs to be tracked." ;
+                                          rdfs:label "ManagedEntity"@en .
 
 
 ###  https://w3id.org/ids/core/Map
@@ -6624,7 +6792,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Message
-<https://w3id.org/ids/core/Message> rdf:type owl:Class .
+<https://w3id.org/ids/core/Message> rdf:type owl:Class ;
+                                    rdfs:comment "Metadata describing payload exchanged by interacting Connectors."@en ;
+                                    rdfs:label "Message"@en .
 
 
 ###  https://w3id.org/ids/core/MessageIdentifier
@@ -6658,7 +6828,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/NamedInstant
 <https://w3id.org/ids/core/NamedInstant> rdf:type owl:Class ;
-                                         rdfs:subClassOf <https://w3id.org/ids/core/Instant> .
+                                         rdfs:subClassOf <https://w3id.org/ids/core/Instant> ;
+                                         rdfs:comment "A temporal entity with a name that has no fixed value, e.g., 'today'."@en ;
+                                         rdfs:label "NamedInstant"@en .
 
 
 ###  https://w3id.org/ids/core/OfferedContract
@@ -6678,11 +6850,15 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Operation
-<https://w3id.org/ids/core/Operation> rdf:type owl:Class .
+<https://w3id.org/ids/core/Operation> rdf:type owl:Class ;
+                                      rdfs:comment "Building block of an Interface; describes the interaction by defining input, output and error parameters."@en ;
+                                      rdfs:label "Operation"@en .
 
 
 ###  https://w3id.org/ids/core/OperationSemantics
-<https://w3id.org/ids/core/OperationSemantics> rdf:type owl:Class .
+<https://w3id.org/ids/core/OperationSemantics> rdf:type owl:Class ;
+                                               rdfs:comment "The class of semantics characterizing an Operation." ;
+                                               rdfs:label "OperationSemantics"@en .
 
 
 ###  https://w3id.org/ids/core/Ordered
@@ -6696,7 +6872,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Parameter
-<https://w3id.org/ids/core/Parameter> rdf:type owl:Class .
+<https://w3id.org/ids/core/Parameter> rdf:type owl:Class ;
+                                      rdfs:comment "Named slot of an Interface Operation i.e., an input, output or fault (exception)."@en ;
+                                      rdfs:label "Parameter"@en .
 
 
 ###  https://w3id.org/ids/core/ParameterDataType
@@ -6706,11 +6884,15 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/ParameterGroup
-<https://w3id.org/ids/core/ParameterGroup> rdf:type owl:Class .
+<https://w3id.org/ids/core/ParameterGroup> rdf:type owl:Class ;
+                                           rdfs:comment "Class of Parameters grouped according to an operator."@en ;
+                                           rdfs:label "Parameter group"@en .
 
 
 ###  https://w3id.org/ids/core/ParameterGroupingOperator
-<https://w3id.org/ids/core/ParameterGroupingOperator> rdf:type owl:Class .
+<https://w3id.org/ids/core/ParameterGroupingOperator> rdf:type owl:Class ;
+                                                      rdfs:comment "The class of operators that relate all members of a ParameterGroup." ;
+                                                      rdfs:label "ParameterGroupingOperator"@en .
 
 
 ###  https://w3id.org/ids/core/ParameterType
@@ -6721,10 +6903,11 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/Participant
 <https://w3id.org/ids/core/Participant> rdf:type owl:Class ;
-                                        rdfs:subClassOf
-                                                        <http://www.w3.org/ns/org#Organization> ,
+                                        rdfs:subClassOf <http://www.w3.org/ns/org#Organization> ,
                                                         <https://w3id.org/ids/core/Agent> ,
-                                                        <https://w3id.org/ids/core/ManagedEntity> .
+                                                        <https://w3id.org/ids/core/ManagedEntity> ;
+                                        rdfs:comment "Stakeholder in the Industrial Data Space, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider."@en ;
+                                        rdfs:label "Participant"@en .
 
 
 ###  https://w3id.org/ids/core/PaymentAction
@@ -6738,12 +6921,16 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/ids/core/Permission
 <https://w3id.org/ids/core/Permission> rdf:type owl:Class ;
                                        rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Permission> ,
-                                                       <https://w3id.org/ids/core/Rule> .
+                                                       <https://w3id.org/ids/core/Rule> ;
+                                       rdfs:comment "The class of Permissions as defined in the ODRL ontology."@en ;
+                                       rdfs:label "Permission"@en .
 
 
 ###  https://w3id.org/ids/core/Person
 <https://w3id.org/ids/core/Person> rdf:type owl:Class ;
-                                   rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> .
+                                   rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
+                                   rdfs:comment "The class of persons (people)"@en ;
+                                   rdfs:label "Person"@en .
 
 
 ###  https://w3id.org/ids/core/PredefinedSecurityProfile
@@ -6761,11 +6948,15 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Protocol
-<https://w3id.org/ids/core/Protocol> rdf:type owl:Class .
+<https://w3id.org/ids/core/Protocol> rdf:type owl:Class ;
+                                     rdfs:comment "Set of communication rules by which a Service implements its Interface(s) in order to become invocable." ;
+                                     rdfs:label "Communication protocol"@en .
 
 
 ###  https://w3id.org/ids/core/ProtocolBinding
-<https://w3id.org/ids/core/ProtocolBinding> rdf:type owl:Class .
+<https://w3id.org/ids/core/ProtocolBinding> rdf:type owl:Class ;
+                                            rdfs:comment "Mapping of abstract operation signatures onto the concrete structures (e.g., HTTP headers or query parameters)."@en ;
+                                            rdfs:label "ProtocolBinding"@en .
 
 
 ###  https://w3id.org/ids/core/ProtocolConstituent
@@ -6824,11 +7015,13 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/Resource
 <https://w3id.org/ids/core/Resource> rdf:type owl:Class ;
-                                     rdfs:subClassOf 
-                                                     <http://www.w3.org/ns/dcat#Dataset> ,
+                                     rdfs:subClassOf <http://www.w3.org/ns/dcat#Dataset> ,
                                                      <https://w3id.org/ids/core/DigitalContent> ,
                                                      <https://w3id.org/ids/core/Identifiable> ,
-                                                     <https://w3id.org/ids/core/ManagedEntity> .
+                                                     <https://w3id.org/ids/core/ManagedEntity> ;
+                                     rdfs:comment "Superclass of digital Resources that is encoded according to a Representation and optionally materialized as an Artifact."@en ;
+                                     rdfs:label "Resource"@en ;
+                                     rdfs:seeAlso <https://www.w3.org/TR/vocab-dcat/#class-dataset> .
 
 
 ###  https://w3id.org/ids/core/ResourceIdentifier
@@ -6861,16 +7054,22 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Role
-<https://w3id.org/ids/core/Role> rdf:type owl:Class .
+<https://w3id.org/ids/core/Role> rdf:type owl:Class ;
+                                 rdfs:comment "Generic notion of a role played by participant in context of the Industrial Data Space." ;
+                                 rdfs:label "Role"@en .
 
 
 ###  https://w3id.org/ids/core/Rule
 <https://w3id.org/ids/core/Rule> rdf:type owl:Class ;
-                                 rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Rule> .
+                                 rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Rule> ;
+                                 rdfs:comment "Superclass of Permissions, Prohibitions and Duties."@en ;
+                                 rdfs:label "Rule"@en .
 
 
 ###  https://w3id.org/ids/core/SecurityProfile
-<https://w3id.org/ids/core/SecurityProfile> rdf:type owl:Class .
+<https://w3id.org/ids/core/SecurityProfile> rdf:type owl:Class ;
+                                            rdfs:comment "Defined set of a Connector’s security properties; specifies several security aspects expressing the minimum requirements a Data Consumer must meet to be granted access to the Data Endpoints exposed by a providing Connector."@en ;
+                                            rdfs:label "SecurityProfile"@en .
 
 
 ###  https://w3id.org/ids/core/Serialization
@@ -6880,7 +7079,10 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/Service
-<https://w3id.org/ids/core/Service> rdf:type owl:Class .
+<https://w3id.org/ids/core/Service> rdf:type owl:Class ;
+                                    rdfs:comment "(Digital) Service implementing an Interface in terms of a Protocol." ;
+                                    rdfs:label "Service"@en ;
+                                    rdfs:seeAlso <http://kmi.github.io/iserve/latest/data-model.html#Minimal_Service_Model> .
 
 
 ###  https://w3id.org/ids/core/ServiceInterface
@@ -6922,7 +7124,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/SpatialEntity
 <https://w3id.org/ids/core/SpatialEntity> rdf:type owl:Class ;
-                                          rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+                                          rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+                                          rdfs:comment "Anything with spatial extent, i.e. size, shape, or position, e.g., places and unique positions."@en ;
+                                          rdfs:label "SpatialEntity"@en .
 
 
 ###  https://w3id.org/ids/core/Standard
@@ -6951,7 +7155,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/SystemAdapter
 <https://w3id.org/ids/core/SystemAdapter> rdf:type owl:Class ;
-                                          rdfs:subClassOf <https://w3id.org/ids/core/DataApp> .
+                                          rdfs:subClassOf <https://w3id.org/ids/core/DataApp> ;
+                                          rdfs:comment "Data App used for integration of custom Data Sources and legacy systems with a Connector."@en ;
+                                          rdfs:label "System Adapter"@en .
 
 
 ###  https://w3id.org/ids/core/TemporalEntity
@@ -6962,7 +7168,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/TransferAttribute
-<https://w3id.org/ids/core/TransferAttribute> rdf:type owl:Class .
+<https://w3id.org/ids/core/TransferAttribute> rdf:type owl:Class ;
+                                              rdfs:comment "General attribute for additional description of security aspects of a data transfer."@en ;
+                                              rdfs:label "TransferAttribute"@en .
 
 
 ###  https://w3id.org/ids/core/TrustedConnector
@@ -6980,11 +7188,15 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/ids/core/UsagePolicy
 <https://w3id.org/ids/core/UsagePolicy> rdf:type owl:Class ;
-                                        rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Policy> .
+                                        rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Policy> ;
+                                        rdfs:comment "Set of rules specified by the Data Sovereign restricting usage of its data; covers aspects like time-to-live or forwarding conditions (e.g., anonymization or scope of usage); transmitted along with the respective data, and enforced while residing on the Connector of the Data Consumer"@en ;
+                                        rdfs:label "Usage policy"@en .
 
 
 ###  https://w3id.org/ids/core/Value
-<https://w3id.org/ids/core/Value> rdf:type owl:Class .
+<https://w3id.org/ids/core/Value> rdf:type owl:Class ;
+                                  rdfs:comment "Terminal node, from the modeling perspective an atomic, possibly typed value."@en ;
+                                  rdfs:label "Value"@en .
 
 
 ###  https://w3id.org/ids/core/Video
@@ -6996,7 +7208,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/VocabularyHub
-<https://w3id.org/ids/core/VocabularyHub> rdf:type owl:Class .
+<https://w3id.org/ids/core/VocabularyHub> rdf:type owl:Class ;
+                                          rdfs:comment "Server providing maintenance facilities for editing, browsing and downloading vocabularies and related documents; mirrors a set of external third-party vocabularies ensuring seamless availability and resolution."@en ;
+                                          rdfs:label "Vocabulary Hub"@en .
 
 
 ###  https://w3id.org/ids/core/WithdrawActivity
@@ -7007,7 +7221,9 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 
 ###  https://w3id.org/ids/core/WorldEntity
-<https://w3id.org/ids/core/WorldEntity> rdf:type owl:Class .
+<https://w3id.org/ids/core/WorldEntity> rdf:type owl:Class ;
+                                        rdfs:comment "Tangible, identifiable entitiy in the real world (feature of interest), i.e., an engine, factory building etc."@en ;
+                                        rdfs:label "World entity"@en .
 
 
 ###  https://w3id.org/ids/metamodel/Constraint
@@ -7075,7 +7291,6 @@ gf:Machine rdf:type owl:NamedIndividual ,
                                       <https://schema.industrialdataspace.org/connector/securityProfile> <http://industrialdataspace.org/securityProfile/0e55ac8b-9184-4b7a-a734-ed5bc2b33691> .
 
 
-
 #################################################################
 #    Annotations
 #################################################################
@@ -7110,15 +7325,6 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
                                                rdfs:label "has narrower"@en .
 
 
-<http://www.w3.org/2004/02/skos/core#prefLabel> rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-                                                rdfs:comment "The range of skos:prefLabel is the class of RDF plain literals."@en ,
-                                                             """skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise
-      disjoint properties."""@en ;
-                                                <http://www.w3.org/2004/02/skos/core#definition> "The preferred lexical label for a resource, in a given language."@en ;
-                                                rdfs:label "preferred label"@en ;
-                                                rdfs:comment "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag."@en .
-
-
 <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://www.w3.org/2004/02/skos/core#definition> "Relates a concept to the concept scheme that it is a top level concept of."@en ;
                                                    rdfs:label "is top concept in scheme"@en ;
                                                    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> .
@@ -7126,350 +7332,6 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
 
 <http://www.w3.org/2006/time#inXSDDateTime> rdfs:comment "It is the property relating Time Instant with the datetime value"@en ;
                                             rdfs:label "In XSD DateTime"@en .
-
-
-<https://w3id.org/ids/core/Action> rdfs:label "Action"@en ;
-                                   rdfs:comment "A thing one might be permitted to do or prohibited from doing to something."@en .
-
-
-<https://w3id.org/ids/core/Activity> rdfs:label "Activity"@en ;
-                                     rdfs:seeAlso <http://www.ddialliance.org/Specification/DDI-CV/LifecycleEventType_1.0.html> ;
-                                     rdfs:comment "Something that occurs over a period of time and acts upon or with entities."@en .
-
-
-<https://w3id.org/ids/core/AppStore> rdfs:comment "Secure platform for distributing Data Apps."@en ;
-                                     rdfs:label "App Store"@en .
-
-
-<https://w3id.org/ids/core/Applicant> rdfs:label "Applicant"@en ;
-                                      rdfs:comment "Organization formally applying for being certified by the Certification Body."@en .
-
-
-<https://w3id.org/ids/core/Artifact> rdfs:comment "Resource Representation materialized in a file, i.e. possessing characteristics like file name, size, creation date etc."@en ;
-                                     rdfs:label "Artifact"@en .
-
-
-<https://w3id.org/ids/core/AuditLogging> rdfs:label "AuditLogging"@en ;
-                                         rdfs:comment "The class of audit logging strategies." .
-
-
-<https://w3id.org/ids/core/AuthInfo> rdfs:label "AuthInfo"@en ;
-                                     rdfs:comment "Holds authentication information so that connections to the Connector's data offerings can be establised."@en .
-
-
-<https://w3id.org/ids/core/AuthStandard> rdfs:label "AuthStandard"@en ;
-                                         rdfs:comment "The class of authentication standards that may be supported by Connectors." .
-
-
-<https://w3id.org/ids/core/AuthenticationSupport> rdfs:comment "The class of support levels for authentication." ;
-                                                  rdfs:label "AuthenticationSupport"@en .
-
-
-<https://w3id.org/ids/core/AuthorizationToken> rdfs:comment "Holds authentication information so that connections to the Connector's data offerings can be establised."@en ;
-                                               rdfs:label "Authorization Token."@en .
-
-
-<https://w3id.org/ids/core/AuthorizationTokenFormat> rdfs:label "Authorization token format"@en ;
-                                                     rdfs:comment "Authorization Token Format."@en .
-
-
-<https://w3id.org/ids/core/BaseConnector> rdfs:comment "Implementation of the Connector specification providing only restricted security capabilities."@en ;
-                                          rdfs:label "Base Connector"@en .
-
-
-<https://w3id.org/ids/core/BoundingPolygon> rdfs:comment "Defines an area of interest as a set of connected points."@en ;
-                                            rdfs:label "BoundingPolygon"@en .
-
-
-<https://w3id.org/ids/core/Broker> rdfs:comment "Broker holding an index of published data endpoints."@en ;
-                                   rdfs:label "Broker"@en .
-
-
-<https://w3id.org/ids/core/BrokerDataMessage> rdfs:comment "The class of all messages intended for data transfer to/from a Broker." ;
-                                              rdfs:label "BrokerDataMessage"@en .
-
-
-<https://w3id.org/ids/core/BrokerDataRequest> rdfs:comment "The class of all messages that represent data requests to a Broker." ;
-                                              rdfs:label "BrokerDataRequest"@en .
-
-
-<https://w3id.org/ids/core/BrokerMessage> rdfs:comment "The class of all messages to interact with a Broker." ;
-                                          rdfs:label "BrokerMessage"@en .
-
-
-<https://w3id.org/ids/core/BrokerQueryMessage> rdfs:label "BrokerQueryMessage"@en ;
-                                               rdfs:comment "The class of all messages that query the broker for data." .
-
-
-<https://w3id.org/ids/core/BrokerQueryRequest> rdfs:label "BrokerQueryRequest"@en ;
-                                               rdfs:comment "The class of all messages that represent query requests to a Broker." .
-
-
-<https://w3id.org/ids/core/BrokerRequestMessage> rdfs:label "BrokerRequestMessage"@en ;
-                                                 rdfs:comment "The class of all messages that represent requests to a Broker." .
-
-
-<https://w3id.org/ids/core/BrokerResponseMessage> rdfs:comment "The class of all messages that represent responses of a Broker." ;
-                                                  rdfs:label "BrokerResponseMessage"@en .
-
-
-<https://w3id.org/ids/core/BrokerServiceProvider> rdfs:label "Broker Service Provider"@en ;
-                                                  rdfs:comment "Intermediary managing a metadata repository that provides information about the Data Sources available in the Industrial Data Space; multiple Broker Service Providers may be around at the same time, maintaining references to different, domain-specific subsets of Data Endpoints."@en .
-
-
-<https://w3id.org/ids/core/Catalog> rdfs:comment "Curated collection of metadata about Resources, Participants, Connectors and further IDS entities"@en ;
-                                    rdfs:label "Catalog"@en .
-
-
-<https://w3id.org/ids/core/Certification> rdfs:label "Certification"@en ;
-                                          rdfs:comment "Abstract certification of compliance according to given Certification Scheme." .
-
-
-<https://w3id.org/ids/core/CertificationAuthority> rdfs:comment "Trusted third-party entity issuing digital certificates (e.g., x509 certificates); may host services to validate certificates issued."@en ;
-                                                   rdfs:label "Certification Authority"@en .
-
-
-<https://w3id.org/ids/core/CertificationBody> rdfs:label "Certification Body"@en ;
-                                              rdfs:comment "Governance body certifying components and entities seeking admission to the Industrial Data Space; aside from having the final word on granting or denying a certificate, it is responsible for maintaining the Certification Scheme (including its catalog of requirements), for overseeing and approval of Evaluation Facilities, and for ensuring compatibility of evaluation procedures carried out by different Evaluation Facilities."@en .
-
-
-<https://w3id.org/ids/core/CertificationScheme> rdfs:label "Certification Scheme"@en ;
-                                                rdfs:comment "Scheme defining the processes, roles, targets, and criteria involved in the certification of components and entities; maintained by the Certification Body." .
-
-
-<https://w3id.org/ids/core/ClearingHouse> rdfs:comment "Intermediary providing clearing and settlement services for all financial and data exchange transactions within the Industrial Data Space."@en ;
-                                          rdfs:label "Clearing House"@en .
-
-
-<https://w3id.org/ids/core/Collection> rdfs:comment "Group of entities supporting particular access operations based on the concrete subclass."@en ;
-                                       rdfs:label "Collection"@en ;
-                                       rdfs:seeAlso <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html> .
-
-
-<https://w3id.org/ids/core/Communicable> rdfs:comment "Data that is capable of being (digitally) communicated via a Data Endpoint."@en ;
-                                         rdfs:label "Communicable"@en .
-
-
-<https://w3id.org/ids/core/Connector> rdfs:comment "Dedicated communication server for sending and receiving data in compliance with the Connector specification. There are different types of Connectors according to provided capabilities."@en ;
-                                      rdfs:label "Connector"@en .
-
-
-<https://w3id.org/ids/core/ContentCategory> rdfs:seeAlso <https://github.com/w3c/dxwg/wiki/Data-aspects---semantics> ;
-                                            rdfs:label "Content Category"@en ;
-                                            rdfs:seeAlso <https://www.w3.org/TR/vocab-dcat/#Property:dataset_theme> ;
-                                            rdfs:comment "Class of categories for classification of Resources." .
-
-
-<https://w3id.org/ids/core/ContentType> rdfs:seeAlso <http://www.ontodm.com/doku.php?id=ontodt> ,
-                                                     <https://github.com/twosixlabs/icas-ontology/blob/master/ontology/mime.ttl> ;
-                                        rdfs:label "Content type"@en ;
-                                        rdfs:comment "Nature of a Digital Content providing hints on its usage, e.g. listing an Audio, navigating a Structure or accessing a List by an index." ;
-                                        rdfs:seeAlso <https://schema.org/additionalType> ,
-                                                     <https://schema.org/DataType> .
-
-
-<https://w3id.org/ids/core/Contract> rdfs:comment "Legal agreement and selection of a particular resource configuration." ;
-                                     rdfs:label "Contract"@en .
-
-
-<https://w3id.org/ids/core/DataApp> rdfs:comment "Self-contained, self-descriptive software package that is distributed via the App Store and deployed inside a Connector; provides access to data and data processing capa­bilities; the interface of a Data App is semantically described by the IDS Information Model."@en ;
-                                    rdfs:label "DataApp"@en .
-
-
-<https://w3id.org/ids/core/DataAsset> rdfs:comment "Resource exchanged via Data Endpoints of the Connector. Data Assets are expected to be focused, homogeneous, and consistent over time with regard to granularity, coverage, context, data structure, and conceptual classification"@en ;
-                                      rdfs:label "DataAsset"@en .
-
-
-<https://w3id.org/ids/core/DataConsumer> rdfs:comment "Core participant in the Industrial Data Space requesting and using data provided by a Data Provider."@en ;
-                                         rdfs:label "Data Consumer"@en .
-
-
-<https://w3id.org/ids/core/DataExchangeAgreement> rdfs:label "DataExchangeAgreement"@en ;
-                                                  rdfs:comment "Contractual agreement between a Data Provider and a Data Consumer regarding the exchange of data in the Industrial Data Space." .
-
-
-<https://w3id.org/ids/core/DataProvider> rdfs:label "Data Provider"@en ;
-                                         rdfs:comment "Core participant exposing Data Sources via a Connector; a Data Provider may be an enterprise or other organization, a data marketplace, an individual, or a “smart thing”."@en .
-
-
-<https://w3id.org/ids/core/DataSink> rdfs:comment "Endpoint consuming data supplied by a Data Provider."@en ;
-                                     rdfs:label "Data Sink"@en .
-
-
-<https://w3id.org/ids/core/DataSource> rdfs:label "Data Source"@en ;
-                                       rdfs:comment "Endpoint exposing data for being retrieved or subscribed to by a Data Consumer."@en .
-
-
-<https://w3id.org/ids/core/DataSovereign> rdfs:comment "Core participant owning the legal rights for, and having complete control over, the data it makes available in the Industrial Data Space; defines the terms and conditions of use of its data."@en ;
-                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Data Owner"@en ;
-                                          rdfs:label "Data Sovereign"@en .
-
-
-<https://w3id.org/ids/core/DataSovereignty> rdfs:comment "The capability of an entity (natural person or corporate) of being entirely self-determined with regards to its data."@en ;
-                                            rdfs:label "DataSovereignty"@en .
-
-
-<https://w3id.org/ids/core/DataTransfer> rdfs:comment "The class of resources that describe a data transfer on the IDS."@en ;
-                                         rdfs:label "DataTransfer"@en .
-
-
-<https://w3id.org/ids/core/DataUser> rdfs:comment "Role of a Participant that has the legal right to use the data of a Data Sovereign as specified by the usage policy."@en ;
-                                     rdfs:label "Data User"@en .
-
-
-<https://w3id.org/ids/core/DigitalContent> rdfs:comment "Content available in a particular digital Serialization."@en ;
-                                           rdfs:seeAlso <https://en.wikipedia.org/wiki/Digital_content> ;
-                                           rdfs:label "Digital content"@en .
-
-
-<https://w3id.org/ids/core/Endpoint> rdfs:label "Endpoint"@en ;
-                                     rdfs:comment "Data exchange point for publication (Data Source) and/or consumption (Data Sink) of Communicable objects."@en .
-
-
-<https://w3id.org/ids/core/GeoFeature> rdfs:label "GeoFeature"@en ;
-                                       rdfs:comment "A location identified by a geonames identifier."@en .
-
-
-<https://w3id.org/ids/core/GeoPoint> rdfs:label "GeoPoint"@en ;
-                                     rdfs:comment "A location identified by geo coordinates."@en .
-
-
-<https://w3id.org/ids/core/Geometry> rdfs:label "Geometry"@en ;
-                                     rdfs:comment "Geometrical shape indicating a spatial area of interest."@en .
-
-
-<https://w3id.org/ids/core/Governance> rdfs:label "Governance"@en ;
-                                       rdfs:comment "Concept defining the rights and duties ('rules of the game') for formal data management, ensuring quality and trust throughout the Industrial Data Space; mission critical to the Industrial Data Space, as a central supervisory authority is missing."@en .
-
-
-<https://w3id.org/ids/core/Identifier> rdfs:label "Identifier"@en ;
-                                       rdfs:comment "Abstract notion of a (globally) unique Identifier, e.g. a URI."@en .
-
-
-<https://w3id.org/ids/core/IdentityProvider> rdfs:label "Identity Provider"@en ;
-                                             rdfs:comment "Intermediary offering services to create, maintain, manage and validate identity information of and for participants in the Industrial Data Space."@en .
-
-
-<https://w3id.org/ids/core/IndustrialClassification> rdfs:label "Industrial classification"@en ;
-                                                     rdfs:comment "The class of industries that can be distinguished by their activities." .
-
-
-<https://w3id.org/ids/core/InfrastructureComponent> rdfs:comment "The class of all infrastructure components of the IDS." ;
-                                                    rdfs:label "InfrastructureComponent"@en .
-
-
-<https://w3id.org/ids/core/Interval> rdfs:label "Interval"@en ;
-                                     rdfs:comment "A temporal entity with non-zero extent or duration, i.e. for which the value of the beginning and end are different."@en .
-
-
-<https://w3id.org/ids/core/LocalDataConfidentiality> rdfs:comment "The class of support levels for local data confidentiality." ;
-                                                     rdfs:label "idsLocalDataConfidentiality"@en .
-
-
-<https://w3id.org/ids/core/Location> rdfs:label "Location"@en ;
-                                     rdfs:comment "Class of all locations on Earth."@en .
-
-
-<https://w3id.org/ids/core/ManagedEntity> rdfs:label "ManagedEntity"@en ;
-                                          rdfs:comment "The class of all individuals that are subject of a lifecycle which needs to be tracked." .
-
-
-<https://w3id.org/ids/core/Message> rdfs:label "Message"@en ;
-                                    rdfs:comment "Metadata describing payload exchanged by interacting Connectors."@en .
-
-
-<https://w3id.org/ids/core/NamedInstant> rdfs:comment "A temporal entity with a name that has no fixed value, e.g., 'today'."@en ;
-                                         rdfs:label "NamedInstant"@en .
-
-
-<https://w3id.org/ids/core/Operation> rdfs:label "Operation"@en ;
-                                      rdfs:comment "Building block of an Interface; describes the interaction by defining input, output and error parameters."@en .
-
-
-<https://w3id.org/ids/core/OperationSemantics> rdfs:label "OperationSemantics"@en ;
-                                               rdfs:comment "The class of semantics characterizing an Operation." .
-
-
-<https://w3id.org/ids/core/Parameter> rdfs:label "Parameter"@en ;
-                                      rdfs:comment "Named slot of an Interface Operation i.e., an input, output or fault (exception)."@en .
-
-
-<https://w3id.org/ids/core/ParameterGroup> rdfs:label "Parameter group"@en ;
-                                           rdfs:comment "Class of Parameters grouped according to an operator."@en .
-
-
-<https://w3id.org/ids/core/ParameterGroupingOperator> rdfs:label "ParameterGroupingOperator"@en ;
-                                                      rdfs:comment "The class of operators that relate all members of a ParameterGroup." .
-
-
-<https://w3id.org/ids/core/Participant> rdfs:comment "Stakeholder in the Industrial Data Space, assuming one or more of the predefined roles; every participant is given a unique identity by the Identity Provider."@en ;
-                                        rdfs:label "Participant"@en .
-
-
-<https://w3id.org/ids/core/Permission> rdfs:label "Permission"@en ;
-                                       rdfs:comment "The class of Permissions as defined in the ODRL ontology."@en .
-
-
-<https://w3id.org/ids/core/Person> rdfs:comment "The class of persons (people)"@en ;
-                                   rdfs:label "Person"@en .
-
-
-<https://w3id.org/ids/core/Protocol> rdfs:label "Communication protocol"@en ;
-                                     rdfs:comment "Set of communication rules by which a Service implements its Interface(s) in order to become invocable." .
-
-
-<https://w3id.org/ids/core/ProtocolBinding> rdfs:label "ProtocolBinding"@en ;
-                                            rdfs:comment "Mapping of abstract operation signatures onto the concrete structures (e.g., HTTP headers or query parameters)."@en .
-
-
-<https://w3id.org/ids/core/Resource> rdfs:seeAlso <https://www.w3.org/TR/vocab-dcat/#class-dataset> ;
-                                     rdfs:label "Resource"@en ;
-                                     rdfs:comment "Superclass of digital Resources that is encoded according to a Representation and optionally materialized as an Artifact."@en .
-
-
-<https://w3id.org/ids/core/Role> rdfs:label "Role"@en ;
-                                 rdfs:comment "Generic notion of a role played by participant in context of the Industrial Data Space." .
-
-
-<https://w3id.org/ids/core/Rule> rdfs:label "Rule"@en ;
-                                 rdfs:comment "Superclass of Permissions, Prohibitions and Duties."@en .
-
-
-<https://w3id.org/ids/core/SecurityProfile> rdfs:label "SecurityProfile"@en ;
-                                            rdfs:comment "Defined set of a Connector’s security properties; specifies several security aspects expressing the minimum requirements a Data Consumer must meet to be granted access to the Data Endpoints exposed by a providing Connector."@en .
-
-
-<https://w3id.org/ids/core/Service> rdfs:comment "(Digital) Service implementing an Interface in terms of a Protocol." ;
-                                    rdfs:seeAlso <http://kmi.github.io/iserve/latest/data-model.html#Minimal_Service_Model> ;
-                                    rdfs:label "Service"@en .
-
-
-<https://w3id.org/ids/core/SpatialEntity> rdfs:comment "Anything with spatial extent, i.e. size, shape, or position, e.g., places and unique positions."@en ;
-                                          rdfs:label "SpatialEntity"@en .
-
-
-<https://w3id.org/ids/core/SystemAdapter> rdfs:comment "Data App used for integration of custom Data Sources and legacy systems with a Connector."@en ;
-                                          rdfs:label "System Adapter"@en .
-
-
-<https://w3id.org/ids/core/TransferAttribute> rdfs:comment "General attribute for additional description of security aspects of a data transfer."@en ;
-                                              rdfs:label "TransferAttribute"@en .
-
-
-<https://w3id.org/ids/core/UsagePolicy> rdfs:label "Usage policy"@en ;
-                                        rdfs:comment "Set of rules specified by the Data Sovereign restricting usage of its data; covers aspects like time-to-live or forwarding conditions (e.g., anonymization or scope of usage); transmitted along with the respective data, and enforced while residing on the Connector of the Data Consumer"@en .
-
-
-<https://w3id.org/ids/core/Value> rdfs:label "Value"@en ;
-                                  rdfs:comment "Terminal node, from the modeling perspective an atomic, possibly typed value."@en .
-
-
-<https://w3id.org/ids/core/VocabularyHub> rdfs:comment "Server providing maintenance facilities for editing, browsing and downloading vocabularies and related documents; mirrors a set of external third-party vocabularies ensuring seamless availability and resolution."@en ;
-                                          rdfs:label "Vocabulary Hub"@en .
-
-
-<https://w3id.org/ids/core/WorldEntity> rdfs:comment "Tangible, identifiable entitiy in the real world (feature of interest), i.e., an engine, factory building etc."@en ;
-                                        rdfs:label "World entity"@en .
 
 
 <https://w3id.org/ids/core/action> rdfs:label "action"@en ;
@@ -7508,14 +7370,6 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
                                               rdfs:comment "General official homepage of the participant."@en .
 
 
-<https://w3id.org/ids/core/coversLanguage> rdfs:comment "States the languages that are used by the content of the DataAsset."@en ;
-                                           rdfs:label "coversLanguage"@en .
-
-
-<https://w3id.org/ids/core/customAttribute> rdfs:label "customAttribute"@en ;
-                                            rdfs:comment "Additional attributes that can be specified for a DataTransfer."@en .
-
-
 <https://w3id.org/ids/core/downloadURL> rdfs:label "Download URL"@en ;
                                         rdfs:comment "Literal HTTP(s) link for download."@en .
 
@@ -7552,16 +7406,8 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
                                        rdfs:comment "Family name of a Person."@en .
 
 
-<https://w3id.org/ids/core/fault> rdfs:comment "Holds information when an Operation has failed."@en ;
-                                  rdfs:label "fault"@en .
-
-
 <https://w3id.org/ids/core/geoFeatureId> rdfs:comment "Geonames identifier."@en ;
                                          rdfs:label "geoFeatureId"@en .
-
-
-<https://w3id.org/ids/core/geoPoint> rdfs:label "geoPoint"@en ;
-                                     rdfs:comment "Refers to a GeoPoint that is member of a BoundingPolygon."@en .
 
 
 <https://w3id.org/ids/core/givenName> rdfs:comment "Given name of a Person."@en ;
@@ -7576,20 +7422,12 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
                                           rdfs:comment "Position of an Instant."@en .
 
 
-<https://w3id.org/ids/core/input> rdfs:comment "Reference to an input Parameter (optionaly) used by the Operation."@en ;
-                                  rdfs:label "input"@en .
-
-
 <https://w3id.org/ids/core/invalidated> rdfs:label "originalEntity"@en ;
                                         rdfs:comment "Managed Entity that was the source of the modification."@en .
 
 
 <https://w3id.org/ids/core/issued> rdfs:comment "Date of issuing the Message."@en ;
                                    rdfs:label "issued"@en .
-
-
-<https://w3id.org/ids/core/keyword> rdfs:label "keyword"@en ;
-                                    rdfs:comment "Links to an item in a flat list of controlled keywords that describe content-related coverage of the DataAsset."@en .
 
 
 <https://w3id.org/ids/core/latitude> rdfs:label "latitude"@en ;
@@ -7608,20 +7446,8 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
                                              rdfs:comment "References a license document that is publicly available on the Web."@en .
 
 
-<https://w3id.org/ids/core/lifecycleActivity> rdfs:comment "Activity that occurs during the lifecycle of the InfrastructureComponent."@en ;
-                                              rdfs:label "lifecycleActivity"@en .
-
-
 <https://w3id.org/ids/core/longitude> rdfs:label "longitude"@en ;
                                       rdfs:comment "Longitude of a GeoPoint (decimal degrees)."@en .
-
-
-<https://w3id.org/ids/core/mandatoryInput> rdfs:label "mandatoryInput"@en ;
-                                           rdfs:comment "Reference to an input Parameter required by the Operation."@en .
-
-
-<https://w3id.org/ids/core/mandatoryOutput> rdfs:label "mandatoryOutput"@en ;
-                                            rdfs:comment "Holds the result of an Operation."@en .
 
 
 <https://w3id.org/ids/core/memberParticipant> rdfs:comment "Indicates that a participant has a member which is again a participant. This is useful for defining hierarchical relations in a participant's organization as well as identifying groups of participants to capture, e.g., members of a collaboration."@en ;
@@ -7642,14 +7468,6 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
 
 <https://w3id.org/ids/core/operator> rdfs:comment "The operator function applied to operands of a Constraint"@en ;
                                      rdfs:label "operator"@en .
-
-
-<https://w3id.org/ids/core/output> rdfs:label "output"@en ;
-                                   rdfs:comment "Holds the result of an Operation."@en .
-
-
-<https://w3id.org/ids/core/paramGroupMember> rdfs:comment "Declares a member of a ParameterGroup."@en ;
-                                             rdfs:label "paramGroupMember"@en .
 
 
 <https://w3id.org/ids/core/permission> rdfs:label "permission"@en ;
@@ -7704,28 +7522,20 @@ rdfs:subPropertyOf rdfs:label "subPropertyOf" ;
                                       rdfs:comment "The participant who started the Activity."@en .
 
 
-<https://w3id.org/ids/core/supportedMetadataVersion> rdfs:label "supportedMetadataVersion"@en ;
-                                                     rdfs:comment "The versions of the Information Model that are supported by the InfrastructureComponent."@en .
-
-
 <https://w3id.org/ids/core/target> rdfs:comment "The operation which is the subject of the policy statement."@en ;
                                    rdfs:label "target"@en .
-
-
-<https://w3id.org/ids/core/theme> rdfs:label "theme"@en ;
-                                  rdfs:comment "Links to a taxonomy entry point that categorizes content-related coverage of the DataAsset."@en .
 
 
 <https://w3id.org/ids/core/unit> rdfs:comment "The unit of measurement of a Constraint."@en ;
                                  rdfs:label "unit"@en .
 
 
-<https://w3id.org/ids/core/variant> rdfs:label "variant"@en ;
-                                    rdfs:comment "Equivalent variant of given Resource, e.g. a translation."@en .
-
-
 <https://w3id.org/ids/metamodel/forProperty> rdfs:label "forProperty"@en ;
                                              rdfs:comment "The property a PropertyValidation targets."@en .
+
+
+<https://w3id.org/ids/metamodel/labelPluralForm> rdfs:label "labelPluralForm"@en ;
+                                                 rdfs:comment "The preferred lexical label for a resource, in plural form in a given language."@en .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
