@@ -16,7 +16,7 @@
 #################################################################
 
 ###  http://creativecommons.org/ns#license
-<http://creativecommons.org/ns#license> rdf:type owl:AnnotationProperty .
+<http://creativecommons.org/ns#license> rdf:type owl:AnnotationProperty  .
 
 
 ###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative
