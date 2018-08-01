@@ -7,7 +7,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
-@base <http://w3id.org/i40/boost40> .
+@base <http://w3id.org/i40/boost40#> .
 
 <http://w3id.org/i40/boost40> rdf:type owl:Ontology .
 
