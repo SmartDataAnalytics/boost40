@@ -1,4 +1,4 @@
-@prefix : <http://georgfischer.com/milling#> .
+@prefix : <http://sda.cs.uni-bonn.de/projects/boost40> .
 @prefix gf: <http://georgfischer.com/milling#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -7,9 +7,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
-@base <http://georgfischer.com/milling> .
+@base <http://w3id.org/i40/boost40> .
 
-<http://georgfischer.com/milling> rdf:type owl:Ontology .
+<http://w3id.org/i40/boost40> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
@@ -429,8 +429,6 @@ ssn:deploymentProcessPart rdf:type owl:ObjectProperty ;
 ###  http://purl.oclc.org/NET/ssnx/ssn#detects
 ssn:detects rdf:type owl:ObjectProperty ;
             rdfs:comment """A relation from a sensor to the Stimulus that the sensor can detect.   
-The Stimulus itself will be serving as a proxy for (see isProxyOf) some observable property.""" ,
-                         """A relation from a sensor to the Stimulus that the sensor can detect.   
 The Stimulus itself will be serving as a proxy for (see isProxyOf) some observable property.""" ;
             rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
             rdfs:label "detects" ;
@@ -449,8 +447,6 @@ ssn:endTime rdf:type owl:ObjectProperty ;
 ssn:featureOfInterest rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#isSettingFor> ;
                       <http://purl.org/dc/elements/1.1/source> """skos:exactMatch 'featureOfInterest' [O&M - ISO/DIS 19156] 
-		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ,
-                                                               """skos:exactMatch 'featureOfInterest' [O&M - ISO/DIS 19156] 
 		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ;
                       rdfs:comment "A relation between an observation and the entity whose quality was observed.   For example, in an observation of the weight of a person, the feature of interest is the person and the quality is weight." ;
                       rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
@@ -661,8 +657,6 @@ ssn:observationResult rdf:type owl:ObjectProperty ;
                       rdfs:domain ssn:Observation ;
                       rdfs:range ssn:SensorOutput ;
                       <http://purl.org/dc/elements/1.1/source> """skos:closeMatch 'result' [O&M - ISO/DIS 19156] 
-		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ,
-                                                               """skos:closeMatch 'result' [O&M - ISO/DIS 19156] 
 		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ;
                       rdfs:comment "Relation linking an Observation (i.e., a description of the context, the Situation, in which the observatioin was made) and a Result, which contains a value representing the value associated with the observed Property." ,
                                    "Relation linking an Observation (i.e., a description of the context, the Situation, in which the observation was made) and a Result, which contains a value representing the value associated with the observed Property." ;
@@ -713,8 +707,6 @@ ssn:observedProperty rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#isSettingFor> ;
                      rdfs:domain ssn:Observation ;
                      <http://purl.org/dc/elements/1.1/source> """skos:exactMatch 'observedProperty' [O&M - ISO/DIS 19156] 
-		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ,
-                                                              """skos:exactMatch 'observedProperty' [O&M - ISO/DIS 19156] 
 		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ;
                      rdfs:comment "Relation linking an Observation to the Property that was observed.  The observedProperty should be a Property (hasProperty) of the FeatureOfInterest (linked by featureOfInterest) of this observation." ;
                      rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
@@ -732,9 +724,6 @@ ssn:observes rdf:type owl:ObjectProperty ;
                                       ssn:observedProperty
                                     ) ;
              rdfs:comment """Relation between a Sensor and a Property that the sensor can observe.
-
-Note that, given the DUL modelling of Qualities, a sensor defined with 'observes only Windspeed' technically links the sensor to particular instances of Windspeed, not to the concept itself - OWL can't express concept-concept relations, only individual-individual.  The property composition ensures that if an observation is made of a particular quality then one can infer that the sensor observes that quality.""" ,
-                          """Relation between a Sensor and a Property that the sensor can observe.
 
 Note that, given the DUL modelling of Qualities, a sensor defined with 'observes only Windspeed' technically links the sensor to particular instances of Windspeed, not to the concept itself - OWL can't express concept-concept relations, only individual-individual.  The property composition ensures that if an observation is made of a particular quality then one can infer that the sensor observes that quality.""" ;
              rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
@@ -767,8 +756,6 @@ ssn:onPlatform rdf:type owl:ObjectProperty ;
 ssn:qualityOfObservation rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf ssn:hasProperty ;
                          <http://purl.org/dc/elements/1.1/source> """skos:exactMatch 'resultQuality' [O&M - ISO/DIS 19156] 
-		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ,
-                                                                  """skos:exactMatch 'resultQuality' [O&M - ISO/DIS 19156] 
 		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ;
                          rdfs:comment "Relation linking an Observation to the adjudged quality of the result.  This is of course complimentary to the MeasurementCapability information recorded for the Sensor that made the Observation." ;
                          rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
@@ -1709,8 +1696,6 @@ ssn:Deployment rdf:type owl:Class ;
                                  owl:allValuesFrom ssn:System
                                ] ;
                <http://purl.org/dc/elements/1.1/source> """skos:closeMatch 'Deployment' [MMI Dev]
-                                 http://marinemetadata.org/community/teams/ontdevices""" ,
-                                                        """skos:closeMatch 'Deployment' [MMI Dev]
                                  http://marinemetadata.org/community/teams/ontdevices""" ;
                rdfs:comment "The ongoing Process of Entities (for the purposes of this ontology, mainly sensors) deployed for a particular purpose.  For example, a particular Sensor deployed on a Platform, or a whole network of Sensors deployed for an observation campaign.  The deployment may have sub processes, such as installation, maintenance, addition, and decomissioning and removal." ,
                             "The ongoing Process of Entities (for the purposes of this ontology, mainly sensors) deployed for a particular purpose.  For example, a particular Sensor deployed on a Platform, or a whole network of Sensors deployed for an observation campaign.  The deployment may have sub processes, such as installation, maintenance, addition, and decommissioning and removal." ;
