@@ -1,0 +1,2456 @@
+@prefix : <http://purl.org/iot/ontology/fiesta-iot#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ns: <http://creativecommons.org/ns#> .
+@prefix qu: <http://purl.org/NET/ssnx/qu/qu#> .
+@prefix dul: <http://www.loa.istc.cnr.it/ontologies/DUL.owl#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://data.qudt.org/qudt/owl/1.0.0/unit.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix onemtom: <http://www.onem2m.org/ontology/Base_Ontology/base_ontology#> .
+@prefix iot-lite: <http://purl.oclc.org/NET/UNIS/fiware/iot-lite#> .
+@prefix fiesta-iot: <http://purl.org/iot/ontology/fiesta-iot#> .
+@prefix mthreelite: <http://purl.org/iot/vocab/m3-lite#> .
+@base <http://purl.org/iot/ontology/fiesta-iot#> .
+
+<http://purl.org/iot/ontology/fiesta-iot#> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+ns:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative
+iot-lite:altRelative rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Relative Altitude can be used in place of an absolute altitude, especially in buildings, where it makes more sense to locate by levels or floors. For example the value \"0\" would indicate \"ground floor\", and \"1\" would indicate \"1st floor\" and so on."@en ;
+                     rdfs:range xsd:string ;
+                     rdfs:domain geo:Point .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#relativeLocation
+iot-lite:relativeLocation rdf:type owl:AnnotationProperty ;
+                          rdfs:comment "Relative Location is used to provide a place for where the Device is in. For example, Geonames URIs can be used to represent a place, city, area, or region. For \"University of Surrey\" this would be \"http://sws.geonames.org/6695971/\""@en ;
+                          rdfs:range xsd:string ;
+                          rdfs:domain geo:Point .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/bibliographicCitation
+dcterms:bibliographicCitation rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.loa.istc.cnr.it/ontologies/DUL.owl#mappableTo
+dul:mappableTo rdf:type owl:AnnotationProperty ;
+               rdfs:label "mappable to"@en .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#seeAlso
+rdfs:seeAlso rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#versionInfo
+owl:versionInfo rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#alt
+geo:alt rdf:type owl:AnnotationProperty ;
+        rdfs:domain geo:Point .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+geo:lat rdf:type owl:AnnotationProperty ;
+        rdfs:domain geo:Point .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+geo:long rdf:type owl:AnnotationProperty ;
+         rdfs:domain geo:Point .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposedBy
+iot-lite:exposedBy rdf:type owl:ObjectProperty ;
+                   owl:inverseOf iot-lite:exposes ;
+                   rdfs:domain ssn:Device ;
+                   rdfs:range iot-lite:Service ;
+                   rdfs:comment "A device is exposed by a service."@en ;
+                   rdfs:label "Exposed By"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposes
+iot-lite:exposes rdf:type owl:ObjectProperty ;
+                 rdfs:domain iot-lite:Service ;
+                 rdfs:range ssn:Device ;
+                 rdfs:comment "For service-oriented queries. The inverse of exposedBy."@en ;
+                 rdfs:label "Exposes"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasAttribute
+iot-lite:hasAttribute rdf:type owl:ObjectProperty ;
+                      rdfs:domain iot-lite:Entity ,
+                                  iot-lite:Object ;
+                      rdfs:range iot-lite:Attribute ;
+                      rdfs:comment "Links the devices with their attributes."@en ;
+                      rdfs:label "Has Attribute"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasCoverage
+iot-lite:hasCoverage rdf:type owl:ObjectProperty ;
+                     rdfs:domain ssn:Device ;
+                     rdfs:comment "Links the devices with their coverages."@en ;
+                     rdfs:label "Has Coverage"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasMetadata
+iot-lite:hasMetadata rdf:type owl:ObjectProperty ;
+                     rdfs:range iot-lite:Metadata ;
+                     rdfs:comment "Links any concept with metadata about that concept."@en ;
+                     rdfs:label "Has Metadata"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasQuantityKind
+iot-lite:hasQuantityKind rdf:type owl:ObjectProperty ;
+                         owl:equivalentProperty onemtom:hasThingProperty ;
+                         rdfs:domain iot-lite:Attribute ,
+                                     ssn:Sensor ;
+                         rdfs:comment "Links a sensor or an attribute with the quantity  kind it measures (e.g. A sensor -sensor1- measures temperature: sensor1 hasQuantityKind temperature)."@en ;
+                         rdfs:label "Has Quantity Kind"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasUnit
+iot-lite:hasUnit rdf:type owl:ObjectProperty ;
+                 owl:equivalentProperty onemtom:hasMetaData ;
+                 rdfs:domain ssn:MeasurementProperty ,
+                             ssn:ObservationValue ,
+                             ssn:Sensor ;
+                 rdfs:comment "Links the sensor with the units of the quantity kind it measures (e.g. A sensor -sensor1- measures temperature in Celsius: senso1 hasUnit Celsius)." ;
+                 rdfs:label "Has Unit"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isAssociatedWith
+iot-lite:isAssociatedWith rdf:type owl:ObjectProperty ;
+                          rdfs:domain iot-lite:Entity ,
+                                      iot-lite:Object ;
+                          rdfs:range iot-lite:Service ;
+                          rdfs:comment "Defines the associations between objects and sensors (e.g. A table (object) has an attribute (temperature at the table) which is associated with a sensor (the temperature sensor of the room). " ;
+                          rdfs:label "Is Associated With"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isSubSystemOf
+iot-lite:isSubSystemOf rdf:type owl:ObjectProperty ;
+                       owl:inverseOf ssn:hasSubSystem ;
+                       rdfs:domain ssn:System ;
+                       rdfs:range ssn:System ;
+                       rdfs:comment "This defines that a devices system is a subsystem of another system. For example, a multi-sensor device is a subsystem of a smart building testbed. This is the inverse of the SSN object property \"hasSubSystem\". It allows a graph to start from a subsystem. This is useful for resource-centric graphs."@en ;
+                       rdfs:label "Is Sub System Of"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#attachedSystem
+ssn:attachedSystem rdf:type owl:ObjectProperty ;
+                   owl:inverseOf ssn:onPlatform ;
+                   rdfs:domain ssn:Platform ;
+                   rdfs:range ssn:System ;
+                   rdfs:comment "Relation between a Platform and any Systems (e.g., Sensors) that are attached to the Platform." ;
+                   rdfs:label "Attached System"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#hasDeployment
+ssn:hasDeployment rdf:type owl:ObjectProperty ;
+                  rdfs:domain ssn:System ;
+                  rdfs:range ssn:Deployment ;
+                  rdfs:comment "Relation between a System and a Deployment, recording that the System/Sensor was deployed in that Deployment." ;
+                  rdfs:label "Has Deployment"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementCapability
+ssn:hasMeasurementCapability rdf:type owl:ObjectProperty ;
+                             rdfs:domain ssn:Sensor ;
+                             rdfs:range ssn:MeasurementCapability ;
+                             rdfs:comment "Relation from a Sensor to a MeasurementCapability describing the measurement properties of the sensor." ;
+                             rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+                             rdfs:label "has measurement  capability" ;
+                             rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementProperty
+ssn:hasMeasurementProperty rdf:type owl:ObjectProperty ;
+                           rdfs:domain ssn:MeasurementCapability ;
+                           rdfs:range ssn:MeasurementProperty ;
+                           rdfs:comment "Relation from a MeasurementCapability to a MeasurementProperty.  For example, to an accuracy (see notes at MeasurementCapability)." ;
+                           rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+                           rdfs:label "has measurement property" ;
+                           rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#hasSubSystem
+ssn:hasSubSystem rdf:type owl:ObjectProperty ;
+                 rdfs:domain ssn:System ;
+                 rdfs:range ssn:System ;
+                 rdfs:comment "Haspart relation between a system and its parts." ;
+                 rdfs:label "Has Sub System"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#hasValue
+ssn:hasValue rdf:type owl:ObjectProperty ;
+             rdfs:domain ssn:SensorOutput ;
+             rdfs:range ssn:ObservationValue ;
+             rdfs:comment "Provides a relation between observationValue and actual value."@en ;
+             rdfs:label "Has Value"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#madeObservation
+ssn:madeObservation rdf:type owl:ObjectProperty ;
+                    owl:equivalentProperty onemtom:hasService ;
+                    owl:inverseOf ssn:observedBy ;
+                    rdfs:domain ssn:Sensor ;
+                    rdfs:range ssn:Observation ;
+                    rdfs:comment "Relation between a Sensor and Observations it has made." ;
+                    rdfs:label "Made Observation"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#observationResult
+ssn:observationResult rdf:type owl:ObjectProperty ;
+                      rdfs:domain ssn:Observation ;
+                      rdfs:range ssn:SensorOutput ;
+                      dc:source """skos:closeMatch 'result' [O&M - ISO/DIS 19156] 
+		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ;
+                      rdfs:comment "Relation linking an Observation (i.e., a description of the context, the Situation, in which the observation was made) and a Result, which contains a value representing the value associated with the observed Property." ;
+                      rdfs:label "Observation Result"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime
+ssn:observationSamplingTime rdf:type owl:ObjectProperty ;
+                            rdfs:domain ssn:Observation ;
+                            rdfs:range time:Instant ;
+                            rdfs:comment "Rebadged as phenomenon time in [O&M]. The phenomenon time shall describe the time that the result applies to the property of the feature-of-interest. This is often the time of interaction by a sampling procedure or observation procedure with a real-world feature." ,
+                                         "The sampling time is the time that the result applies to the feature-of-interest. This is the time usually required for geospatial analysis of the result." ;
+                            rdfs:label "Observation Sampling Time"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#observedBy
+ssn:observedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain ssn:Observation ;
+               rdfs:range ssn:Sensor ;
+               rdfs:comment "Relation between a observation and it sensor."@en ;
+               rdfs:label "observed by"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#observedProperty
+ssn:observedProperty rdf:type owl:ObjectProperty ;
+                     rdfs:domain ssn:Observation ;
+                     dc:source """skos:exactMatch 'observedProperty' [O&M - ISO/DIS 19156] 
+		                    http://portal.opengeospatial.org/files/?artifact_id=41579""" ;
+                     rdfs:comment "Relation linking an Observation to the Property that was observed.  The observedProperty should be a Property (hasProperty) of the FeatureOfInterest (linked by featureOfInterest) of this observation." ;
+                     rdfs:label "Observed Property" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#onPlatform
+ssn:onPlatform rdf:type owl:ObjectProperty ;
+               rdfs:domain ssn:System ;
+               rdfs:range ssn:Platform ;
+               rdfs:comment "Relation between a System (e.g., a Sensor) and a Platform.  The relation locates the sensor relative to other described entities: i.e., the Sensor s1's location is Platform p1.  More precise locations for sensors in space (relative to other entities, where attached to another entity, or in 3D space) are made using DOLCE's Regions (SpaceRegion)." ;
+               rdfs:label "On Platform" .
+
+
+###  http://purl.org/iot/vocab/m3-lite#hasDirection
+mthreelite:hasDirection rdf:type owl:ObjectProperty ;
+                        rdfs:domain ssn:Observation ;
+                        rdfs:range [ rdf:type owl:Restriction ;
+                                     owl:onProperty mthreelite:hasDirection ;
+                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass mthreelite:Direction
+                                   ] ;
+                        rdfs:comment "The observations made by the sensors are affected by the direction of the sensing device. This property allows observations of the sensor to be associated to the Direction concept"@en ;
+                        rdfs:label "Has Direction"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#hasDomainOfInterest
+mthreelite:hasDomainOfInterest rdf:type owl:ObjectProperty ;
+                               rdfs:domain ssn:Device ;
+                               rdfs:range mthreelite:DomainOfInterest ;
+                               rdfs:comment "This property is used to classify devices by DomainOfInterest (e.g., blood pressure sensor is used in healthcare)"@en ;
+                               rdfs:label "Has Domain Of Interest"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#hasMeasurementType
+mthreelite:hasMeasurementType rdf:type owl:ObjectProperty ;
+                              rdfs:domain ssn:Observation ;
+                              rdfs:comment "Each sensing device can have a different sensing mechanism which may result in different kinds of sensor data. This property links observation of the sensor to the associated MeasurementType."@en ;
+                              rdfs:label "Has Measurement Type"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#hasSoundSource
+mthreelite:hasSoundSource rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf mthreelite:hasSource ;
+                          rdfs:comment "This property links sound to its environmental source."@en ;
+                          rdfs:label "Has Sound Source"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#hasSource
+mthreelite:hasSource rdf:type owl:ObjectProperty ;
+                     rdfs:comment "This property links sensed phenomena to its environmental source."@en ;
+                     rdfs:label "Has Source"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#hasMetaData
+onemtom:hasMetaData rdf:type owl:ObjectProperty ;
+                    rdfs:comment "A Value of a Thing can have MetaData (like units, precision-ranges)." ;
+                    rdfs:label "Has MetaData"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#hasService
+onemtom:hasService rdf:type owl:ObjectProperty ;
+                   rdfs:comment "The Functionalities of a Device are exposed in the network as Services of the Device" ;
+                   rdfs:label "Has Service"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#hasThingProperty
+onemtom:hasThingProperty rdf:type owl:ObjectProperty ;
+                         rdfs:comment "A Thing may have properties that can be described by Values" ;
+                         rdfs:label "Has Thing Property"@en .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#location
+geo:location rdf:type owl:ObjectProperty ;
+             rdfs:range geo:Point ;
+             rdfs:comment "Provides relation between object and its physical location."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#endpoint
+iot-lite:endpoint rdf:type owl:DatatypeProperty ;
+                  rdfs:domain iot-lite:Service ;
+                  rdfs:range xsd:anyURI ;
+                  rdfs:comment "Endpoint of the service. It is usually a URL where the service is available." ;
+                  rdfs:label "Endpoint"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#id
+iot-lite:id rdf:type owl:DatatypeProperty ;
+            rdfs:domain iot-lite:Entity ,
+                        ssn:Device ;
+            rdfs:range xsd:string ;
+            rdfs:comment "The ID of the Device or Entity."@en ;
+            rdfs:label "ID"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#interfaceDescription
+iot-lite:interfaceDescription rdf:type owl:DatatypeProperty ;
+                              rdfs:domain iot-lite:Service ;
+                              rdfs:range xsd:anyURI ;
+                              rdfs:comment "Interface Description of the service, e.g. WADL, WSDL, NGSI9 etc." ;
+                              rdfs:label "Interface Description"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#interfaceType
+iot-lite:interfaceType rdf:type owl:DatatypeProperty ;
+                       rdfs:domain iot-lite:Service ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Defines the type of interface of the service endpoint, e.g. RESTful, NGSI-9, MQTT, CoAP etc."@en ;
+                       rdfs:label "Interface Type"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isMobile
+iot-lite:isMobile rdf:type owl:DatatypeProperty ;
+                  rdfs:domain ssn:Platform ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Is the Device mobile? This can be used by an IoT management platform to enable tracking of the device's location."@en ;
+                  rdfs:label "Is Mobile"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isOnline
+iot-lite:isOnline rdf:type owl:DatatypeProperty ;
+                  rdfs:domain iot-lite:Service ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Identifies if the service is online or not."@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataType
+iot-lite:metadataType rdf:type owl:DatatypeProperty ;
+                      rdfs:domain iot-lite:Metadata ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Defines the type pf the metadata value (e.g. resolution of the sensor)." ;
+                      rdfs:label "Metadata Type"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataValue
+iot-lite:metadataValue rdf:type owl:DatatypeProperty ;
+                       rdfs:domain iot-lite:Metadata ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Value of the metadata" ;
+                       rdfs:label "Metadata Value"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#radius
+iot-lite:radius rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:double ;
+                rdfs:comment "Specifies the radius of a circle coverage defined by a point -the centre of the circle- and its radius." ;
+                rdfs:label "Radius"@en .
+
+
+###  http://www.loa.istc.cnr.it/ontologies/DUL.owl#hasDataValue
+dul:hasDataValue rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ssn:MeasurementProperty ,
+                             ssn:ObservationValue ,
+                             mthreelite:Direction ;
+                 rdfs:range [ rdf:type rdfs:Datatype ;
+                              owl:unionOf ( xsd:boolean
+                                            xsd:dateTime
+                                            xsd:double
+                                            xsd:int
+                                            [ rdf:type rdfs:Datatype ;
+                                              owl:onDatatype xsd:string ;
+                                              owl:withRestrictions ( [ xsd:maxLength "255"^^xsd:int
+                                                                     ]
+                                                                   )
+                                            ]
+                                          )
+                            ] ;
+                 rdfs:comment """A datatype property that encodes values from a datatype for an Entity. 
+There are several ways to encode values in DOLCE (Ultralite):
+
+1) Directly assert an xsd:_ value to an Entity by using hasDataValue
+2) Assert a Region for an Entity by using hasRegion, and then assert an xsd:_ value to that Region, by using hasRegionDataValue
+3) Assert a Quality for an Entity by using hasQuality, then assert a Region for that Quality, and assert an xsd:_ value to that Region, by using hasRegionDataValue
+4) When the value is required, but not directly observed, assert a Parameter for an xsd:_ value by using hasParameterDataValue, and then associate the Parameter to an Entity by using isConstraintFor
+5) When the value is required, but not directly observed, you can also assert a Parameter for a Region by using parametrizes, and then assert an xsd:_ value to that Region, by using hasRegionDataValue
+
+The five approaches obey different requirements. 
+For example, a simple value can be easily asserted by using pattern (1), but if one needs to assert an interval between two values, a Region should be introduced to materialize that interval, as pattern (2) suggests. 
+Furthermore, if one needs to distinguish the individual Quality of a value, e.g. the particular nature of the density of a substance, pattern (3) can be used. 
+Patterns (4) and (5) should be used instead when a constraint or a selection is modelled, independently from the actual observation of values in the real world.""" ;
+                 rdfs:label "Has Data Value"@en .
+
+
+###  http://www.w3.org/2006/time#inXSDDateTime
+time:inXSDDateTime rdf:type owl:DatatypeProperty ;
+                   rdfs:domain time:Instant ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:comment "It is the property relating Time Instant with the datetime value"@en ;
+                   rdfs:label "In XSD DateTime"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice
+iot-lite:ActuatingDevice rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:Device ;
+                         rdfs:comment "Device that can actuate over an object or QuantityKind (e.g., switch on/off the light)."@en ;
+                         rdfs:label "Actuating Device"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute
+iot-lite:Attribute rdf:type owl:Class ;
+                   rdfs:comment "An attribute of an IoT object that can be exposed by an IoT service (i.e. a room (IoT Object) has a temperature (Attribute), that can be exposed by a temperature sensor (IoT device)."@en ;
+                   rdfs:label "Attribute"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Entity
+iot-lite:Entity rdf:type owl:Class ;
+                owl:equivalentClass iot-lite:Object ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty iot-lite:hasAttribute ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass iot-lite:Attribute
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty iot-lite:isAssociatedWith ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass iot-lite:Service
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty geo:location ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass geo:Point
+                                ] ;
+                rdfs:comment "Any object that is relevant from a user or application perspective. (IoT-A Definition)"@en ;
+                rdfs:label "Entity"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata
+iot-lite:Metadata rdf:type owl:Class ;
+                  rdfs:comment "Class used to describe properties that cannot be described by QuantityKind and Units. i.e. the resolution of a sensor."@en ;
+                  rdfs:label "Metadata"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Object
+iot-lite:Object rdf:type owl:Class ;
+                rdfs:comment "IoT entity"@en ;
+                rdfs:label "IoT Entity or Object"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Service
+iot-lite:Service rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty iot-lite:exposes ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass ssn:Device
+                                 ] ;
+                 rdfs:comment "Service provided by an IoT Device"@en ;
+                 rdfs:label "Service"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#TagDevice
+iot-lite:TagDevice rdf:type owl:Class ;
+                   rdfs:subClassOf ssn:Device ;
+                   rdfs:comment "Device that can redirect to a resource with information (i.e. RFID, NFC, QR-codes, bar-codes)."@en ;
+                   rdfs:label "Tagging Device"@en .
+
+
+###  http://purl.oclc.org/NET/UNIS/fiware/iot-lite#VirtualEntity
+iot-lite:VirtualEntity rdf:type owl:Class ;
+                       rdfs:subClassOf iot-lite:Entity ;
+                       rdfs:comment """Computational or data element representing a Physical Entity. Virtual Entities can be either Active or Passive Digital Entities.
+
+Physical Entities are represented in the digital world by a Virtual Entity. This
+term is also referred to as “virtual counterpart” in the literature (Ro¨mer et al. 2002),
+but using the same root term “entity” in both concepts clearer shows the relationship
+of these concepts. There are many kinds of digital representations of Physical
+Entities: 3D models, avatars, database entries, objects (or instances of a class in an
+object-oriented programming language), and even a social-network account could
+be viewed as such a representation, because it digitally represents certain aspects of
+its human owner, such as a photograph or a list of his hobbies.
+
+Also see, Enabling Things to Talk: Designing IoT solutions with the IoT Architectural Reference Model, Alessandro Bassi, Martin Bauer, Martin Fiedler, Thorsten Kramp,
+Rob van Kranenburg, Sebastian Lange, Stefan Meissner"""@en ;
+                       rdfs:label "Virtual Entity"@en .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Accuracy
+ssn:Accuracy rdf:type owl:Class ;
+             rdfs:subClassOf ssn:MeasurementProperty ;
+             dc:source """skos:exactMatch 'measurement accuracy/accuracy' [VIM 2.13] 
+                            http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf""" ;
+             rdfs:comment "The closeness of agreement between the value of an observation and the true value of the observed quality." ;
+             rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+             rdfs:label "Accuracy" ;
+             rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Deployment
+ssn:Deployment rdf:type owl:Class ;
+               dc:source """skos:closeMatch 'Deployment' [MMI Dev]
+                                 http://marinemetadata.org/community/teams/ontdevices""" ;
+               rdfs:comment "The ongoing Process of Entities (for the purposes of this ontology, mainly sensors) deployed for a particular purpose.  For example, a particular Sensor deployed on a Platform, or a whole network of Sensors deployed for an observation campaign.  The deployment may have sub processes, such as installation, maintenance, addition, and decommissioning and removal." ;
+               rdfs:label "Deployment"@en ;
+               rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#Deployment" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Device
+ssn:Device rdf:type owl:Class ;
+           rdfs:subClassOf ssn:System ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty iot-lite:exposedBy ;
+                             owl:someValuesFrom iot-lite:Service
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass mthreelite:DomainOfInterest
+                           ] ;
+           dc:source "http://www.w3.org/2005/Incubator/ssn/" ;
+           rdfs:comment "A device is a physical piece of technology - a system in a box. Devices may of course be built of smaller devices and software components (i.e. systems have components)." ;
+           rdfs:label "Device"@en ;
+           rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Device#Device" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Frequency
+ssn:Frequency rdf:type owl:Class ;
+              rdfs:subClassOf ssn:MeasurementProperty ;
+              rdfs:comment "The smallest possible time between one observation and the next." ;
+              rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+              rdfs:label "Frequency" ;
+              rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Latency
+ssn:Latency rdf:type owl:Class ;
+            rdfs:subClassOf ssn:MeasurementProperty ;
+            rdfs:comment "The time between a request for an observation and the sensor providing a result." ;
+            rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+            rdfs:label "Latency" ;
+            rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#MeasurementCapability
+ssn:MeasurementCapability rdf:type owl:Class ;
+                          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                            owl:onProperty ssn:hasMeasurementProperty ;
+                                            owl:allValuesFrom ssn:MeasurementProperty
+                                          ] ;
+                          dc:source """Similar idea to MeasurementCapability in MMI Device Ontology
+                                  http://marinemetadata.org/community/teams/ontdevices
+
+But the the two express the relationship between constraints and multiple measurement properties differently.
+
+The conditions linked to a MeasurementCapability are skos:exactMatch to 'influence quantity' [VIM 2.52]
+http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf""" ;
+                          rdfs:comment """Collects together measurement properties (accuracy, range, precision, etc) and the environmental conditions in which those properties hold, representing a specification of a sensor's capability in those conditions.
+
+The conditions specified here are those that affect the measurement properties, while those in OperatingRange represent the sensor's standard operating conditions, including conditions that don't affect the observations.""" ;
+                          rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+                          rdfs:label "Measurement Capability" ;
+                          rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#MeasurementProperty
+ssn:MeasurementProperty rdf:type owl:Class ;
+                        rdfs:comment "An identifiable and observable characteristic of a sensor's observations or ability to make observations." ;
+                        rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+                        rdfs:label "Measurement  Property" ;
+                        rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Observation
+ssn:Observation rdf:type owl:Class ;
+                owl:equivalentClass onemtom:Service ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty ssn:observationSamplingTime ;
+                                  owl:minCardinality "0"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ssn:observedBy ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass ssn:Sensor
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty geo:location ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass geo:Point
+                                ] ;
+                dc:source """skos:closeMatch 'observation' [O&M] 
+		                    http://www.opengeospatial.org/standards/om 
+
+Observation in this ontology and O&M are described differently (O&M records an observation as an act/event), but they record the same thing and are essentially interchangeable.  The difference is in the ontological structure of the two, not the data or use.
+
+Observation here records a Situation (the estimation of the value of a Property) and a description of the method that was used (along with the participants), while O&M interprets an Observation as the event itself; there must, however, have been an event that lead to our situation, so both are records of events.  The distinction is between the event itself and the record of what happened in that event.
+
+
+skos:closeMatch 'measurement result' [VIM 2.9] http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf
+
+Measurement result in VIM is the measured value plus any other relevant information, which means that measurement result and observation will often be associated to the same data (a value, a time, a property, etc.).""" ;
+                rdfs:comment "An Observation is a Situation in which a Sensing method has been used to estimate or calculate a value of a Property of a FeatureOfInterest.  Links to Sensing and Sensor describe what made the Observation and how; links to Property and Feature detail what was sensed; the result is the output of a Sensor; other metadata details times etc." ;
+                rdfs:label "Observation"@en ;
+                rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#ObservationValue
+ssn:ObservationValue rdf:type owl:Class ;
+                     owl:equivalentClass onemtom:OperationOutput ;
+                     dc:source """skos:exactMatch 'measured quantity value' [VIM 2.10]
+                                  http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf
+
+skos:exactMatch 'observed value' [SensorML OGC-0700]
+http://www.opengeospatial.org/standards/sensorml 
+
+skos:closeMatch 'observation result' [O&M]
+http://www.opengeospatial.org/standards/om 
+
+O&M conflates what we have as SensorOutput and ObservationValue into observation result, though the OGC standard does say \"result contains a value\" and \"a result which has a value\", which fits naturally with the model here.""" ;
+                     rdfs:comment "The value of the result of an Observation.  An Observation has a result which is the output of some sensor, the result is an information object that encodes some value for a Feature." ;
+                     rdfs:label "Observation Value" ;
+                     rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Base#Data" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Platform
+ssn:Platform rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty ssn:attachedSystem ;
+                               owl:allValuesFrom ssn:System
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty geo:location ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass geo:Point
+                             ] ;
+             dc:source """skos:exactMatch 'platform' [SensorML OGC-0700]
+                                  http://www.opengeospatial.org/standards/sensorml""" ;
+             rdfs:comment "An Entity to which other Entities can be attached - particularly Sensors and other Platforms.  For example, a post might act as the Platform, a buoy might act as a Platform, or a fish might act as a Platform for an attached sensor." ;
+             rdfs:label "Platform"@en ;
+             rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#PlatformSite" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Precision
+ssn:Precision rdf:type owl:Class ;
+              rdfs:subClassOf ssn:MeasurementProperty ;
+              dc:source """skos:exactMatch 'measurement precision/precision' [VIM 2.15]
+                                   http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf""" ;
+              rdfs:comment "The closeness of agreement between replicate observations on an unchanged or similar quality value: i.e., a measure of a sensor's ability to consitently reproduce an observation." ;
+              rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+              rdfs:label "Precision" ;
+              rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Resolution
+ssn:Resolution rdf:type owl:Class ;
+               rdfs:subClassOf ssn:MeasurementProperty ;
+               dc:source """skos:exactMatch 'resolution' [VIM 4.14]
+                                  http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf""" ;
+               rdfs:comment "The smallest difference in the value of a quality being observed that would result in perceptably different values of observation results." ;
+               rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+               rdfs:label "Resolution" ;
+               rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#ResponseTime
+ssn:ResponseTime rdf:type owl:Class ;
+                 rdfs:subClassOf ssn:MeasurementProperty ;
+                 dc:source """skos:exactMatch 'step response time' [VIM 4.23]
+                                  http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf""" ;
+                 rdfs:comment "The time between a (step) change inthe value of an observed quality and a sensor (possibly with specified error) 'settling' on an observed value." ;
+                 rdfs:isDefinedBy "http://purl.oclc.org/NET/ssnx/ssn" ;
+                 rdfs:label "Response time" ;
+                 rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#SensingDevice
+ssn:SensingDevice rdf:type owl:Class ;
+                  owl:equivalentClass onemtom:Device ;
+                  rdfs:subClassOf ssn:Device ,
+                                  ssn:Sensor ;
+                  dc:source "http://www.w3.org/2005/Incubator/ssn/" ;
+                  rdfs:comment "A sensing device is a device that implements sensing." ;
+                  rdfs:label "Sensing Device"@en ;
+                  rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#Measuring" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Sensor
+ssn:Sensor rdf:type owl:Class ;
+           owl:equivalentClass onemtom:Thing ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty ssn:madeObservation ;
+                             owl:someValuesFrom ssn:Observation
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ssn:hasMeasurementCapability ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass ssn:MeasurementCapability
+                           ] ;
+           dc:source """skos:exactMatch 'sensor' [SensorML OGC-0700]
+		                    http://www.opengeospatial.org/standards/sensorml 
+
+                                skos:closeMatch 'observation procedure' [O&M] 
+                                http://www.opengeospatial.org/standards/om 
+
+O&M allows sensors, methods, instruments, systems, algorithms and process chains as the processUsed of an observation; this ontology allows a similar range of things (anything that can do sensing), just they are all grouped under the term sensor (which is thus wider than the O&M concept).""" ;
+           rdfs:comment "A sensor can do (implements) sensing: that is, a sensor is any entity that can follow a sensing method and thus observe some Property of a FeatureOfInterest.  Sensors may be physical devices, computational methods, a laboratory setup with a person following a method, or any other thing that can follow a Sensing Method to observe a Property." ;
+           rdfs:label "Sensor"@en ;
+           rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#SensorOutput
+ssn:SensorOutput rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty ssn:hasValue ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass ssn:ObservationValue
+                                 ] ;
+                 rdfs:comment "A sensor outputs a piece of information (an observed value), the value itself being represented by an ObservationValue." ;
+                 rdfs:label "Sensor Output"@en ;
+                 rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton" .
+
+
+###  http://purl.oclc.org/NET/ssnx/ssn#System
+ssn:System rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty ssn:hasSubSystem ;
+                             owl:someValuesFrom ssn:System
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty iot-lite:isSubSystemOf ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass ssn:System
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ssn:hasDeployment ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass ssn:Deployment
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ssn:onPlatform ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass ssn:Platform
+                           ] ;
+           dc:source "http://www.w3.org/2005/Incubator/ssn/" ;
+           rdfs:comment "System is a unit of abstraction for pieces of infrastructure (and we largely care that they are) for sensing. A system has components, its subsystems, which are other systems." ;
+           rdfs:label "System"@en ;
+           rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#System" .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ABS
+mthreelite:ABS rdf:type owl:Class ;
+               rdfs:subClassOf iot-lite:ActuatingDevice ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                 owl:someValuesFrom mthreelite:Transportation
+                               ] ;
+               rdfs:comment "The ABS (Anti-lock Braking System) receives information from ABS computer to control the pressure on the breaks, This helps the wheels not to get locked up, it adjust the break pressure and prevents the wheels from locking. (Definition Source Google)."@en ;
+               rdfs:label "ABS (Anti-lock Braking System) Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Accelerometer
+mthreelite:Accelerometer rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:SensingDevice ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty mthreelite:hasDomainOfInterest ;
+                                           owl:someValuesFrom mthreelite:Transportation
+                                         ] ;
+                         rdfs:comment " Accelerometers are used to automatically determine the orientation in which the user is holding the IoT Object (portrait or landscape)."@en ;
+                         rdfs:label "Accelerometer"@en ;
+                         rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#Accelerometer> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Agriculture
+mthreelite:Agriculture rdf:type owl:Class ;
+                       rdfs:subClassOf mthreelite:DomainOfInterest ;
+                       rdfs:comment "Agriculture, Smart farm as an Internet of Things (IoT) applicative domain."@en ;
+                       rdfs:label "Agriculture DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AirConditioner
+mthreelite:AirConditioner rdf:type owl:Class ;
+                          rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:BuildingAutomation
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:Transportation
+                                          ] ;
+                          rdfs:comment "An actuator to automatically switch on/off the air conditioner."@en ;
+                          rdfs:label "Air Conditioner Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AirHumiditySensor
+mthreelite:AirHumiditySensor rdf:type owl:Class ;
+                             rdfs:subClassOf mthreelite:HumiditySensor ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty mthreelite:hasDomainOfInterest ;
+                                               owl:someValuesFrom mthreelite:Environment
+                                             ] ;
+                             rdfs:comment "Sensor used to measure air humidity."@en ;
+                             rdfs:label "Air Humidity Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AirPollutantSensor
+mthreelite:AirPollutantSensor rdf:type owl:Class ;
+                              rdfs:subClassOf ssn:SensingDevice ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                owl:someValuesFrom mthreelite:Environment
+                                              ] ;
+                              rdfs:comment "Air Pollutant Sensor are devices that detect and monitor the presence of air pollution in the surrounding area (source Wikipedia)."@en ;
+                              rdfs:label "Air Pollutant Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AirThermometer
+mthreelite:AirThermometer rdf:type owl:Class ;
+                          rdfs:subClassOf mthreelite:Thermometer ;
+                          rdfs:comment "Device to measure the Air temperature of either indoor or outdoor atmosphere."@en ;
+                          rdfs:label "Air Thermometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AlarmSystem
+mthreelite:AlarmSystem rdf:type owl:Class ;
+                       rdfs:subClassOf iot-lite:ActuatingDevice ;
+                       rdfs:comment "An actuator to automatically switch on/off the alarm system."@en ;
+                       rdfs:label "Alarm System Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AlcoholLevelSensor
+mthreelite:AlcoholLevelSensor rdf:type owl:Class ;
+                              rdfs:subClassOf ssn:SensingDevice ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                owl:someValuesFrom mthreelite:Transportation
+                                              ] ;
+                              rdfs:comment "Device used to detect and measure Alcohol Level in the system."@en ;
+                              rdfs:label "Alcohol Level Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#AtmosphericPressureSensor
+mthreelite:AtmosphericPressureSensor rdf:type owl:Class ;
+                                     rdfs:subClassOf ssn:SensingDevice ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                       owl:someValuesFrom mthreelite:Agriculture
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                       owl:someValuesFrom mthreelite:Weather
+                                                     ] ;
+                                     rdfs:comment "Atmospheric Pressure Sensor, Barometer or Barometric Pressure Sensor is a scientific instrument used in meteorology to measure atmospheric pressure."@en ;
+                                     rdfs:label "Atmospheric Pressure Sensor"@en ;
+                                     rdfs:seeAlso <http://archive.knoesis.org/research/semsci/application_domain/sem_sensor/ont/weather.owlPressure> ,
+                                                  <http://casas.wsu.edu/owl/cose.owl#BarometricPressureSensor> ,
+                                                  <http://purl.oclc.org/NET/ssnx/meteo/aws#AtmosphericPressureSensor> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Barcode
+mthreelite:Barcode rdf:type owl:Class ;
+                   rdfs:subClassOf iot-lite:TagDevice ;
+                   rdfs:comment "A tagging device can be Barcode."@en ;
+                   rdfs:label "Barcode Tagging Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Blind
+mthreelite:Blind rdf:type owl:Class ;
+                 rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty mthreelite:hasDomainOfInterest ;
+                                   owl:someValuesFrom mthreelite:BuildingAutomation
+                                 ] ;
+                 rdfs:comment "An actuator to automatically switch on/off the window blinds."@en ;
+                 rdfs:label "Blind Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#BloodPressureSensor
+mthreelite:BloodPressureSensor rdf:type owl:Class ;
+                               rdfs:subClassOf ssn:SensingDevice ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                 owl:someValuesFrom mthreelite:Health
+                                               ] ;
+                               rdfs:comment "Device used to measure Blood Pressure."@en ;
+                               rdfs:label "Blood Pressure Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#BoardThermometer
+mthreelite:BoardThermometer rdf:type owl:Class ;
+                            rdfs:subClassOf mthreelite:Thermometer ;
+                            rdfs:comment "Device used to measure board temperature."@en ;
+                            rdfs:label "Board Thermometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#BoardVoltageSensor
+mthreelite:BoardVoltageSensor rdf:type owl:Class ;
+                              rdfs:subClassOf mthreelite:VoltageSensor ;
+                              rdfs:comment "Sensor used to measure board input voltage."@en ;
+                              rdfs:label "Board Voltage Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#BodyThermometer
+mthreelite:BodyThermometer rdf:type owl:Class ;
+                           rdfs:subClassOf mthreelite:Thermometer ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Health
+                                           ] ;
+                           rdfs:comment "Device used to measure body temperature."@en ;
+                           rdfs:label "Body Thermometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Boiler
+mthreelite:Boiler rdf:type owl:Class ;
+                  rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mthreelite:hasDomainOfInterest ;
+                                    owl:someValuesFrom mthreelite:BuildingAutomation
+                                  ] ;
+                  rdfs:comment "An actuator to automatically switch on/off the boiler."@en ;
+                  rdfs:label "Boiler Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#BuildingAutomation
+mthreelite:BuildingAutomation rdf:type owl:Class ;
+                              rdfs:subClassOf mthreelite:DomainOfInterest ;
+                              rdfs:comment "Smart Home/Building Automation as an Internet of Things (IoT) applicative domain."@en ;
+                              rdfs:label "Smart Building DOI"@en ;
+                              rdfs:seeAlso <http://elite.polito.it/ontologies/dogont.owl#BuildingEnvironment> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Bus
+mthreelite:Bus rdf:type owl:Class ;
+               rdfs:subClassOf ssn:Platform ;
+               rdfs:comment "A large motor vehicle carrying passengers by road, typically one serving the public on a fixed route and for a fare."@en ;
+               rdfs:label "Bus"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#CO2Sensor
+mthreelite:CO2Sensor rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:GaseousPollutantSensor ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:Agriculture
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:Environment
+                                     ] ;
+                     rdfs:comment "Carbon Dioxide (CO2) Sensor used to measure level of CO2 in the atmosphere."@en ;
+                     rdfs:label "Carbon Dioxide (CO2) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#COSensor
+mthreelite:COSensor rdf:type owl:Class ;
+                    rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                    rdfs:comment "Device to detect Carbon Monoxide (CO) in the environment."@en ;
+                    rdfs:label "Carbon Monoxide (CO) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#CholesterolSensor
+mthreelite:CholesterolSensor rdf:type owl:Class ;
+                             rdfs:subClassOf ssn:SensingDevice ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty mthreelite:hasDomainOfInterest ;
+                                               owl:someValuesFrom mthreelite:Health
+                                             ] ;
+                             rdfs:comment "Device used to measure the cholesterol level in a system."@en ;
+                             rdfs:label "Cholesterol Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#City
+mthreelite:City rdf:type owl:Class ;
+                rdfs:subClassOf mthreelite:DomainOfInterest ;
+                rdfs:comment "Smart City as an Internet of Things (IoT) applicative domain."@en ;
+                rdfs:label "Smart City DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Clock
+mthreelite:Clock rdf:type owl:Class ;
+                 rdfs:subClassOf ssn:SensingDevice ;
+                 rdfs:comment "sensor that measures time"@en ;
+                 rdfs:label "Clock"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#CloudCoverSensor
+mthreelite:CloudCoverSensor rdf:type owl:Class ;
+                            rdfs:subClassOf ssn:SensingDevice ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty mthreelite:hasDomainOfInterest ;
+                                              owl:someValuesFrom mthreelite:Weather
+                                            ] ;
+                            rdfs:comment "Cloud Cover Sensor is used to detect whether it is sunny, cloudy, etc."@en ;
+                            rdfs:label "Cloud Cover Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#CoffeeMachine
+mthreelite:CoffeeMachine rdf:type owl:Class ;
+                         rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty mthreelite:hasDomainOfInterest ;
+                                           owl:someValuesFrom mthreelite:BuildingAutomation
+                                         ] ;
+                         rdfs:comment "An actuator to automatically switch on/off the coffee machine."@en ;
+                         rdfs:label "Coffee Machine, Coffee Maker Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Computer
+mthreelite:Computer rdf:type owl:Class ;
+                    rdfs:subClassOf iot-lite:ActuatingDevice ;
+                    rdfs:comment "Actuating devices for Computer or PC."@en ;
+                    rdfs:label "Computer, PC Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ConductivitySensor
+mthreelite:ConductivitySensor rdf:type owl:Class ;
+                              rdfs:subClassOf ssn:SensingDevice ;
+                              rdfs:comment "Device used to measure the conductivity of a system."@en ;
+                              rdfs:label "Conductivity Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Counter
+mthreelite:Counter rdf:type owl:Class ;
+                   rdfs:subClassOf ssn:SensingDevice ;
+                   rdfs:comment "Sensors that reckons occurrences or repetitions of physical objects, phenomena or events."@en ;
+                   rdfs:label "Counter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Cupboard
+mthreelite:Cupboard rdf:type owl:Class ;
+                    rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty mthreelite:hasDomainOfInterest ;
+                                      owl:someValuesFrom mthreelite:BuildingAutomation
+                                    ] ;
+                    rdfs:comment "An actuator to automatically open/close the cupboard."@en ;
+                    rdfs:label "Cupboard Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#CurrentSensor
+mthreelite:CurrentSensor rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:SensingDevice ;
+                         rdfs:comment "A current sensor is a device that detects electric current in a wire, and generates a signal proportional to that current."@en ;
+                         rdfs:label "Current Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Curtain
+mthreelite:Curtain rdf:type owl:Class ;
+                   rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty mthreelite:hasDomainOfInterest ;
+                                     owl:someValuesFrom mthreelite:BuildingAutomation
+                                   ] ;
+                   rdfs:comment "An actuator to automatically open/close the curtain."@en ;
+                   rdfs:label "Curtain Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DeltaDewPointSensor
+mthreelite:DeltaDewPointSensor rdf:type owl:Class ;
+                               rdfs:subClassOf ssn:SensingDevice ;
+                               rdfs:comment "Device that measures the difference between Dewpoint and surface temperatures."@en ;
+                               rdfs:label "Delta Dew Point Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DeviceUptimeClock
+mthreelite:DeviceUptimeClock rdf:type owl:Class ;
+                             rdfs:subClassOf mthreelite:Clock ;
+                             rdfs:comment "Sensor that measures time a device is working and is available."@en ;
+                             rdfs:label "Device Uptime Clock"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DewPointSensor
+mthreelite:DewPointSensor rdf:type owl:Class ;
+                          rdfs:subClassOf ssn:SensingDevice ;
+                          rdfs:comment "Device that measures dew point."@en ;
+                          rdfs:label "Dew Point Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Direction
+mthreelite:Direction rdf:type owl:Class ;
+                     rdfs:comment "Measurements of sensors are affected by the direction of the sensing device. This concept is used to reflect it."@en ;
+                     rdfs:label "Direction"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DirectionAzimuth
+mthreelite:DirectionAzimuth rdf:type owl:Class ;
+                            rdfs:subClassOf mthreelite:Direction ;
+                            rdfs:comment "The geodetic azimuth of the direction towards which an object is point to."@en ;
+                            rdfs:label "Direction Azimuth"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DirectionHeading
+mthreelite:DirectionHeading rdf:type owl:Class ;
+                            rdfs:subClassOf mthreelite:Direction ;
+                            rdfs:comment "The course or direction in which a object (vehicle, person, ...) is moving."@en ;
+                            rdfs:label "Direction Heading"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DirectionOfArrivalSensor
+mthreelite:DirectionOfArrivalSensor rdf:type owl:Class ;
+                                    rdfs:subClassOf ssn:SensingDevice ;
+                                    rdfs:comment "Sensor that estimates the azimuth direction of sources relative to the sensor’s position."@en ;
+                                    rdfs:label "Direction Of Arrival (DOA) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DishWasher
+mthreelite:DishWasher rdf:type owl:Class ;
+                      rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty mthreelite:hasDomainOfInterest ;
+                                        owl:someValuesFrom mthreelite:BuildingAutomation
+                                      ] ;
+                      rdfs:comment "An actuator to automatically switch on/off the dishwasher."@en ;
+                      rdfs:label "Dish Washer Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DistanceNextBusSensor
+mthreelite:DistanceNextBusSensor rdf:type owl:Class ;
+                                 rdfs:subClassOf mthreelite:DistanceSensor ;
+                                 rdfs:comment " Virtual device that represents a bus stop X and a bus line Y; it measures the driving distance between the next bus (belonging to line Y) and the bus stop X. "@en ;
+                                 rdfs:label "Sensor measuring the driving distance between a bus and the next bus stop"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DistanceSensor
+mthreelite:DistanceSensor rdf:type owl:Class ;
+                          rdfs:subClassOf ssn:SensingDevice ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:Transportation
+                                          ] ;
+                          rdfs:comment "Distance Sensor is used to detect distance between two objects for example:  the safety distance with other cars. Distance sensor can be a laser."@en ;
+                          rdfs:label "Distance Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DomainOfInterest
+mthreelite:DomainOfInterest rdf:type owl:Class ;
+                            rdfs:comment "Application Domain for example: health, environment, etc."@en ;
+                            rdfs:label "Domain Of Interest"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Door
+mthreelite:Door rdf:type owl:Class ;
+                rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty mthreelite:hasDomainOfInterest ;
+                                  owl:someValuesFrom mthreelite:BuildingAutomation
+                                ] ;
+                rdfs:comment "An actuator to automatically open/close the door."@en ;
+                rdfs:label "Door Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DoorStateSensor
+mthreelite:DoorStateSensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ;
+                           rdfs:comment "This sensor detects if a door is in the state of OPEN or CLOSED."@en ;
+                           rdfs:label "Door State Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Drawer
+mthreelite:Drawer rdf:type owl:Class ;
+                  rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mthreelite:hasDomainOfInterest ;
+                                    owl:someValuesFrom mthreelite:BuildingAutomation
+                                  ] ;
+                  rdfs:comment "An actuator to automatically open/close the drawer."@en ;
+                  rdfs:label "Drawer Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#DustSensor
+mthreelite:DustSensor rdf:type owl:Class ;
+                      rdfs:subClassOf ssn:SensingDevice ;
+                      rdfs:comment "A sensing device that measures dust particle concentration."@en ;
+                      rdfs:label "Dust Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ECG
+mthreelite:ECG rdf:type owl:Class ;
+               rdfs:subClassOf ssn:SensingDevice ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                 owl:someValuesFrom mthreelite:Emotion
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                 owl:someValuesFrom mthreelite:Health
+                               ] ;
+               rdfs:comment "ECG or EKG (Electrocardiogram) device."@en ;
+               rdfs:label "ECG or EKG (Electrocardiogram)"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ESP
+mthreelite:ESP rdf:type owl:Class ;
+               rdfs:subClassOf iot-lite:ActuatingDevice ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                 owl:someValuesFrom mthreelite:Transportation
+                               ] ;
+               rdfs:comment "The actuator for turning ESP on/off."@en ;
+               rdfs:label "ESP (Electronic Stability Program) Actuating device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ElectricFieldSensor
+mthreelite:ElectricFieldSensor rdf:type owl:Class ;
+                               rdfs:subClassOf ssn:SensingDevice ;
+                               rdfs:comment "Scientific instrument for measuring electromagnetic fields (EMF). Most of them measure the electromagnetic radiation flux density (DC fields) or the change in an electromagnetic field over time (AC fields)."@en ;
+                               rdfs:label "Electric Field Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ElectricalSensor
+mthreelite:ElectricalSensor rdf:type owl:Class ;
+                            rdfs:subClassOf ssn:SensingDevice ;
+                            rdfs:comment "Sensor that measures the changes in electrical or magnetic signals based on an environmental input."@en ;
+                            rdfs:label "Electrical Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Emotion
+mthreelite:Emotion rdf:type owl:Class ;
+                   rdfs:subClassOf mthreelite:DomainOfInterest ;
+                   rdfs:comment "Affective Science, Emotion, Mood, Emotional State, Brain Wave as an Internet of Things (IoT) applicative domain."@en ;
+                   rdfs:label "Emotion DOI"@en ;
+                   rdfs:seeAlso <http://ns.inria.fr/emoca#Emotion> ,
+                                <http://sensormeasurement.appspot.com/naturopathy#Emotion> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#EnergyDOI
+mthreelite:EnergyDOI rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:DomainOfInterest ;
+                     rdfs:comment "Energy or Smart Grid as an Internet of Things (IoT) applicative domain."@en ;
+                     rdfs:label "Energy DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#EnergyMeter
+mthreelite:EnergyMeter rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:EnergyDOI
+                                       ] ;
+                       rdfs:comment "Sensor to measure power or energy consumption."@en ;
+                       rdfs:label "Energy Meter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Environment
+mthreelite:Environment rdf:type owl:Class ;
+                       rdfs:subClassOf mthreelite:DomainOfInterest ;
+                       rdfs:comment "Environment (earthquake, flooding, fire, pollution) as an Internet of Things (IoT) applicative domain."@en ;
+                       rdfs:label "Environment DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#FallDetector
+mthreelite:FallDetector rdf:type owl:Class ;
+                        rdfs:subClassOf ssn:SensingDevice ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty mthreelite:hasDomainOfInterest ;
+                                          owl:someValuesFrom mthreelite:BuildingAutomation
+                                        ] ;
+                        rdfs:comment "Device to detect is a person has fallen."@en ;
+                        rdfs:label "Fall Detector"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#FogLamp
+mthreelite:FogLamp rdf:type owl:Class ;
+                   rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty mthreelite:hasDomainOfInterest ;
+                                     owl:someValuesFrom mthreelite:Transportation
+                                   ] ;
+                   rdfs:comment "The actuator for turning on or off the fog lamp."@en ;
+                   rdfs:label "Fog Lamp Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Freezer
+mthreelite:Freezer rdf:type owl:Class ;
+                   rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty mthreelite:hasDomainOfInterest ;
+                                     owl:someValuesFrom mthreelite:BuildingAutomation
+                                   ] ;
+                   rdfs:comment "An actuator to automatically open/close the freezer."@en ;
+                   rdfs:label "Freezer, Chiller Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#FrequencySensor
+mthreelite:FrequencySensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ;
+                           rdfs:comment "Device used to detect the frequency."@en ;
+                           rdfs:label "Frequency Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Fridge
+mthreelite:Fridge rdf:type owl:Class ;
+                  rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mthreelite:hasDomainOfInterest ;
+                                    owl:someValuesFrom mthreelite:BuildingAutomation
+                                  ] ;
+                  rdfs:comment "An actuator to automatically switch on/off the fridge."@en ;
+                  rdfs:label "Fridge, Refrigerator Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#FuelLevel
+mthreelite:FuelLevel rdf:type owl:Class ;
+                     rdfs:subClassOf ssn:SensingDevice ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:Transportation
+                                     ] ;
+                     rdfs:comment "Device used to detect fuel level in a system such a car."@en ;
+                     rdfs:label "Fuel Level Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#GPSSensor
+mthreelite:GPSSensor rdf:type owl:Class ;
+                     rdfs:subClassOf ssn:SensingDevice ;
+                     rdfs:comment "Device that allows an object to localize itself."@en ;
+                     rdfs:label "GPS Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#GasDetector
+mthreelite:GasDetector rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ;
+                       rdfs:comment "Device that detects the presence of gases in an area, often as part of a safety system."@en ;
+                       rdfs:label "Gas Detector"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#GaseousPollutantSensor
+mthreelite:GaseousPollutantSensor rdf:type owl:Class ;
+                                  rdfs:subClassOf mthreelite:AirPollutantSensor ;
+                                  rdfs:comment "Device used to detect poisonous gaseous in the environment."@en ;
+                                  rdfs:label "Gaseous Pollutant Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Glucometer
+mthreelite:Glucometer rdf:type owl:Class ;
+                      rdfs:subClassOf ssn:SensingDevice ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty mthreelite:hasDomainOfInterest ;
+                                        owl:someValuesFrom mthreelite:Health
+                                      ] ;
+                      rdfs:comment "Device used to detect glucometer, blood sugar, blood glucose level"@en ;
+                      rdfs:label "Glucometer Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#GyrometerSensor
+mthreelite:GyrometerSensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Transportation
+                                           ] ;
+                           rdfs:comment "A gyrometer is an instrument which measures an angular speed."@en ;
+                           rdfs:label "Gyrometer Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#GyroscopeSensor
+mthreelite:GyroscopeSensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:BuildingAutomation
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Transportation
+                                           ] ;
+                           rdfs:comment "A gyroscope is a device for measuring or maintaining orientation."@en ;
+                           rdfs:label "Gyroscope Sensor"@en ;
+                           rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#Gyroscope> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#H2SSensor
+mthreelite:H2SSensor rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                     rdfs:comment "Device used to measure of hydrogen sulphide in the environment."@en ;
+                     rdfs:label "H2S Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Health
+mthreelite:Health rdf:type owl:Class ;
+                  rdfs:subClassOf mthreelite:DomainOfInterest ;
+                  rdfs:comment "Healthcare as an Internet of Things (IoT) applicative domain."@en ;
+                  rdfs:label "Health Care DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#HeartBeatSensor
+mthreelite:HeartBeatSensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Health
+                                           ] ;
+                           rdfs:comment "Device to count heart beats per minute."@en ;
+                           rdfs:label "Heart Beat Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Heating
+mthreelite:Heating rdf:type owl:Class ;
+                   rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty mthreelite:hasDomainOfInterest ;
+                                     owl:someValuesFrom mthreelite:BuildingAutomation
+                                   ] ;
+                   rdfs:comment "An actuator to automatically switch on/off the heating."@en ;
+                   rdfs:label "Heating Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#HumanPresenceDetector
+mthreelite:HumanPresenceDetector rdf:type owl:Class ;
+                                 rdfs:subClassOf mthreelite:PresenceDetector ;
+                                 rdfs:comment "Device used to detect if an object (vehicle, room, place, etc.) is occupied by Human."@en ;
+                                 rdfs:label " Human Presence Detector"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#HumiditySensor
+mthreelite:HumiditySensor rdf:type owl:Class ;
+                          rdfs:subClassOf ssn:SensingDevice ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:Agriculture
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:Environment
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:Weather
+                                          ] ;
+                          rdfs:comment "Humidity sensor or hygrometer is an instrument used for measuring the moisture concent in the environment."@en ;
+                          rdfs:label "Humidity Sensor"@en ;
+                          rdfs:seeAlso <http://purl.oclc.org/NET/ssnx/meteo/aws#HumiditySensor> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Hydrophone
+mthreelite:Hydrophone rdf:type owl:Class ;
+                      rdfs:subClassOf ssn:SensingDevice ;
+                      rdfs:comment "A hydrophone is a microphone designed to be used underwater for recording or listening to underwater sound."@en ;
+                      rdfs:label "Hydrophone"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#IEEE802154InterfaceEnergyMeter
+mthreelite:IEEE802154InterfaceEnergyMeter rdf:type owl:Class ;
+                                          rdfs:subClassOf mthreelite:EnergyMeter ;
+                                          rdfs:comment "Sensor that measures the power consumption of the IEEE802.15.4 interface nodes."@en ;
+                                          rdfs:label "IEEE802.15.4 Interface Energy Meter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ImageSensor
+mthreelite:ImageSensor rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ;
+                       rdfs:comment "Sensor that detects and conveys the information that constitutes an image."@en ;
+                       rdfs:label "Image Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Irrigation
+mthreelite:Irrigation rdf:type owl:Class ;
+                      rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty mthreelite:hasDomainOfInterest ;
+                                        owl:someValuesFrom mthreelite:Agriculture
+                                      ] ;
+                      rdfs:comment "An actuator to automatically irrigate."@en ;
+                      rdfs:label "Irrigation Actuation Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Lamp
+mthreelite:Lamp rdf:type owl:Class ;
+                rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty mthreelite:hasDomainOfInterest ;
+                                  owl:someValuesFrom mthreelite:BuildingAutomation
+                                ] ;
+                rdfs:comment "An actuator to automatically switch on/off the lamp."@en ;
+                rdfs:label "Lamp Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Lavatory
+mthreelite:Lavatory rdf:type owl:Class ;
+                    rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty mthreelite:hasDomainOfInterest ;
+                                      owl:someValuesFrom mthreelite:BuildingAutomation
+                                    ] ;
+                    rdfs:comment "An actuator to automatically switch on/off the lavatory."@en ;
+                    rdfs:label "Lavatory"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#LeafWetnessSensor
+mthreelite:LeafWetnessSensor rdf:type owl:Class ;
+                             rdfs:subClassOf ssn:SensingDevice ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty mthreelite:hasDomainOfInterest ;
+                                               owl:someValuesFrom mthreelite:Agriculture
+                                             ] ;
+                             rdfs:comment "Leaf Wetness Sensor is used in agriculture to check whether the plants need to be watered."@en ;
+                             rdfs:label "Leaf Wetness Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#LightSensor
+mthreelite:LightSensor rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:BuildingAutomation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Transportation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Weather
+                                       ] ;
+                       rdfs:comment "Light/Illuminance Sensor is used to adjust the brightness of the surface."@en ;
+                       rdfs:label "Light Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#LoRaInterface
+mthreelite:LoRaInterface rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:SensingDevice ;
+                         rdfs:comment "This device is used for long range low power wireless communications. We can use this device to report network metrics (SNR, latence, etc.)"@en ;
+                         rdfs:label "LoRa Interface"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#LoRaInterfaceEnergyMeter
+mthreelite:LoRaInterfaceEnergyMeter rdf:type owl:Class ;
+                                    rdfs:subClassOf mthreelite:EnergyMeter ;
+                                    rdfs:comment "Measure the average power consumption of the LoRa interface nodes."@en ;
+                                    rdfs:label "LoRa Interface Energy Meter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Magnetometer
+mthreelite:Magnetometer rdf:type owl:Class ;
+                        rdfs:subClassOf ssn:SensingDevice ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty mthreelite:hasDomainOfInterest ;
+                                          owl:someValuesFrom mthreelite:BuildingAutomation
+                                        ] ;
+                        rdfs:comment "A magnetometer is an device that measures magnetism—either magnetization of magnetic material like a ferromagnet, or the strength and, in some cases, direction of the magnetic field at a point in space. (Source Wikipedia)."@en ;
+                        rdfs:label "Magnetometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#MethaneSensor
+mthreelite:MethaneSensor rdf:type owl:Class ;
+                         rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                         rdfs:comment "Device used to detect Methane in the environment."@en ;
+                         rdfs:label "Methane (CH4) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Microwave
+mthreelite:Microwave rdf:type owl:Class ;
+                     rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:BuildingAutomation
+                                     ] ;
+                     rdfs:comment "An actuator to automatically switch on/off the Microwave."@en ;
+                     rdfs:label "Microwave Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#NFC
+mthreelite:NFC rdf:type owl:Class ;
+               rdfs:subClassOf iot-lite:TagDevice ;
+               rdfs:comment "A tagging device can be NFC (Near Field Communication)."@en ;
+               rdfs:label "NFC Tagging Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#NH3Sensor
+mthreelite:NH3Sensor rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                     rdfs:comment "Device used to detect NH3 level in the environment."@en ;
+                     rdfs:label "NH3 Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#NO2Sensor
+mthreelite:NO2Sensor rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:GaseousPollutantSensor ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:Environment
+                                     ] ;
+                     rdfs:comment "Sensor detecting levels of Nitrogen Dioxide (NO2) in the environment."@en ;
+                     rdfs:label "Nitrogen Dioxide (NO2) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#NOSensor
+mthreelite:NOSensor rdf:type owl:Class ;
+                    rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                    rdfs:comment "Device used to detect Nitrogen Oxide (NO) in the environment."@en ;
+                    rdfs:label "Nitrogen Oxide (NO) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#O3Sensor
+mthreelite:O3Sensor rdf:type owl:Class ;
+                    rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                    rdfs:comment "Device used to detect Ozone (O3) in the environment."@en ;
+                    rdfs:label "Ozone (O3) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Odometer
+mthreelite:Odometer rdf:type owl:Class ;
+                    rdfs:subClassOf ssn:SensingDevice ;
+                    rdfs:comment "An odometer or odograph is an instrument that indicates distance travelled by a vehicle, such as bicycle or automobile."@en ;
+                    rdfs:label "Odometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#OpticalDustSensor
+mthreelite:OpticalDustSensor rdf:type owl:Class ;
+                             rdfs:subClassOf mthreelite:DustSensor ;
+                             rdfs:comment "A sensing device that measures dust particle concentration using optical sensing mean."@en ;
+                             rdfs:label "Optical Dust Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#OxidationReductionPotentialSensor
+mthreelite:OxidationReductionPotentialSensor rdf:type owl:Class ;
+                                             rdfs:subClassOf ssn:SensingDevice ;
+                                             rdfs:comment "Measures the Water Oxidation Reduction Potential (ORP) as the tendency of a chemical species to acquire electrons and thereby be reduced."@en ;
+                                             rdfs:label "Oxidation Reduction Potential (ORP) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#OxygenSensor
+mthreelite:OxygenSensor rdf:type owl:Class ;
+                        rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                        rdfs:comment "Device used to detect Oxygen (O2) in the environment."@en ;
+                        rdfs:label "Oxygen Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PHSensor
+mthreelite:PHSensor rdf:type owl:Class ;
+                    rdfs:subClassOf ssn:SensingDevice ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty mthreelite:hasDomainOfInterest ;
+                                      owl:someValuesFrom mthreelite:Agriculture
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty mthreelite:hasDomainOfInterest ;
+                                      owl:someValuesFrom mthreelite:Environment
+                                    ] ;
+                    rdfs:comment "Device used to detect PH level."@en ;
+                    rdfs:label "PH Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Pedometer
+mthreelite:Pedometer rdf:type owl:Class ;
+                     rdfs:subClassOf ssn:SensingDevice ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:Health
+                                     ] ;
+                     rdfs:comment "Pedometer is used to count the number of steps when walking, running, etc."@en ;
+                     rdfs:label "Pedometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PeopleCountSensor
+mthreelite:PeopleCountSensor rdf:type owl:Class ;
+                             rdfs:subClassOf mthreelite:Counter ;
+                             rdfs:comment "Device used to count the number of people (eg, used within an indoor area)."@en ;
+                             rdfs:label "People Count Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PeopleFlowCountSensor
+mthreelite:PeopleFlowCountSensor rdf:type owl:Class ;
+                                 rdfs:subClassOf mthreelite:PeopleCountSensor ;
+                                 rdfs:comment "Device used to count the number of people the moves from an area towards another area during a time window."@en ;
+                                 rdfs:label "People Flow Count Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PeopleStayDurationSensor
+mthreelite:PeopleStayDurationSensor rdf:type owl:Class ;
+                                    rdfs:subClassOf ssn:SensingDevice ;
+                                    rdfs:comment "Device used to measure the time people stays within an area."@en ;
+                                    rdfs:label "People Stay Duration Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Place
+mthreelite:Place rdf:type owl:Class ;
+                 rdfs:subClassOf mthreelite:DomainOfInterest ;
+                 rdfs:comment "Location, Place, GPS coordinates as an Internet of Things (IoT) applicative domain."@en ;
+                 rdfs:label "Place DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PrecipitationSensor
+mthreelite:PrecipitationSensor rdf:type owl:Class ;
+                               rdfs:subClassOf ssn:SensingDevice ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                 owl:someValuesFrom mthreelite:Agriculture
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                 owl:someValuesFrom mthreelite:Weather
+                                               ] ;
+                               rdfs:comment "It is a device measuring the amount of precipitation."@en ;
+                               rdfs:label "Precipitation Sensor"@en ;
+                               rdfs:seeAlso <http://purl.oclc.org/NET/ssnx/meteo/aws#PrecipitationSensor> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PresenceDetector
+mthreelite:PresenceDetector rdf:type owl:Class ;
+                            rdfs:subClassOf ssn:SensingDevice ;
+                            rdfs:comment "Device used to detect if on object is occupied or not."@en ;
+                            rdfs:label "Presence Detector"@en ;
+                            rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#PassiveInfraredSensor> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PressureSensor
+mthreelite:PressureSensor rdf:type owl:Class ;
+                          rdfs:subClassOf ssn:SensingDevice ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:BuildingAutomation
+                                          ] ;
+                          rdfs:comment "A device used to detect pressure. For example, it can be attached on the bed to infer if the user is lying, sleeping, sitting, bed occupancy, etc."@en ;
+                          rdfs:label "Pressure Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ProximitySensor
+mthreelite:ProximitySensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ;
+                           rdfs:comment "Detect if something is within proximity of a sensor."@en ;
+                           rdfs:label "Proximity Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#PulseOxymeter
+mthreelite:PulseOxymeter rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:SensingDevice ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty mthreelite:hasDomainOfInterest ;
+                                           owl:someValuesFrom mthreelite:Health
+                                         ] ;
+                         rdfs:comment "Pulse Oxymeter, SpO2, Blood Oxygen Saturation Sensor are used to measure the concentration of oxygen in the blood."@en ;
+                         rdfs:label "Pulse Oxymeter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#QRCode
+mthreelite:QRCode rdf:type owl:Class ;
+                  rdfs:subClassOf iot-lite:TagDevice ;
+                  rdfs:comment "A tagging device can be QRCode."@en ;
+                  rdfs:label "QR Code tagging Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#RFID
+mthreelite:RFID rdf:type owl:Class ;
+                rdfs:subClassOf iot-lite:TagDevice ;
+                rdfs:comment "A tagging device can be RFID."@en ;
+                rdfs:label "RFID Tagging Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#RadiationParticleDetector
+mthreelite:RadiationParticleDetector rdf:type owl:Class ;
+                                     rdfs:subClassOf ssn:SensingDevice ;
+                                     rdfs:comment "A particle detector, also known as a radiation detector or Geiger counter, is a device used to detect, track, and/or identify ionising particles, such as those produced by nuclear decay, cosmic radiation, or reactions in a particle accelerator."@en ;
+                                     rdfs:label "Radiation Particle Detector"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#RoadSurfaceThermometer
+mthreelite:RoadSurfaceThermometer rdf:type owl:Class ;
+                                  rdfs:subClassOf mthreelite:Thermometer ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                    owl:someValuesFrom mthreelite:Transportation
+                                                  ] ;
+                                  rdfs:comment "Device used to measure the road Surface temperature."@en ;
+                                  rdfs:label "Road Surface Thermometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SO2Sensor
+mthreelite:SO2Sensor rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                     rdfs:comment "Device use to detect Sulphur Dioxide (SO2) level in the environment."@en ;
+                     rdfs:label "Sulphur Dioxide (SO2) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SaltMeter
+mthreelite:SaltMeter rdf:type owl:Class ;
+                     rdfs:subClassOf ssn:SensingDevice ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:Environment
+                                     ] ;
+                     rdfs:comment "Device use to detect salinity of water."@en ;
+                     rdfs:label "Salt Meter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SeatBeltTensionSensor
+mthreelite:SeatBeltTensionSensor rdf:type owl:Class ;
+                                 rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                   owl:someValuesFrom mthreelite:Transportation
+                                                 ] ;
+                                 rdfs:comment " Actuator used to turn Seat Belt Tension Actuator on or off. "@en ;
+                                 rdfs:label "Seat Belt Tension Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Seismometer
+mthreelite:Seismometer rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ;
+                       rdfs:comment "Seismometers are instruments that measure motions of the ground, including those of seismic waves generated by earthquakes, volcanic eruptions, and other seismic sources."@en ;
+                       rdfs:label "Seismometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ShakeSensor
+mthreelite:ShakeSensor rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Environment
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Transportation
+                                       ] ;
+                       rdfs:comment "Shake sensor is used to deduce the quality of the road, earthquakes."@en ;
+                       rdfs:label "Shake Sensor"@en ;
+                       rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#ShakeSensor> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Shower
+mthreelite:Shower rdf:type owl:Class ;
+                  rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mthreelite:hasDomainOfInterest ;
+                                    owl:someValuesFrom mthreelite:BuildingAutomation
+                                  ] ;
+                  rdfs:comment "An actuator to automatically switch on/off the shower."@en ;
+                  rdfs:label "Shower Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Sink
+mthreelite:Sink rdf:type owl:Class ;
+                rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty mthreelite:hasDomainOfInterest ;
+                                  owl:someValuesFrom mthreelite:BuildingAutomation
+                                ] ;
+                rdfs:comment "An actuator to automatically switch on/off the sink."@en ;
+                rdfs:label "Sink Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SkinConductanceSensor
+mthreelite:SkinConductanceSensor rdf:type owl:Class ;
+                                 rdfs:subClassOf ssn:SensingDevice ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                   owl:someValuesFrom mthreelite:Emotion
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                   owl:someValuesFrom mthreelite:Health
+                                                 ] ;
+                                 rdfs:comment "Device used to detect Skin Conductance."@en ;
+                                 rdfs:label "Skin Conductance Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SmokeDetector
+mthreelite:SmokeDetector rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:SensingDevice ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty mthreelite:hasDomainOfInterest ;
+                                           owl:someValuesFrom mthreelite:BuildingAutomation
+                                         ] ;
+                         rdfs:comment "Device used to detect if there is a fire or the smoke."@en ;
+                         rdfs:label "Smoke Detector"@en ;
+                         rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#SmokeAlarm> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SnowChains
+mthreelite:SnowChains rdf:type owl:Class ;
+                      rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty mthreelite:hasDomainOfInterest ;
+                                        owl:someValuesFrom mthreelite:Transportation
+                                      ] ;
+                      rdfs:comment "The actuator that turn Snow chains on/off."@en ;
+                      rdfs:label "Snow Chains Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SoilHumiditySensor
+mthreelite:SoilHumiditySensor rdf:type owl:Class ;
+                              rdfs:subClassOf mthreelite:HumiditySensor ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                owl:someValuesFrom mthreelite:Agriculture
+                                              ] ;
+                              rdfs:comment "Soil Humidity sensor, Soil moisture, Hygrometer are an instrument used for measuring the soil moisture or soil humidity."@en ;
+                              rdfs:label "Soil Humidity Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SoilThermometer
+mthreelite:SoilThermometer rdf:type owl:Class ;
+                           rdfs:subClassOf mthreelite:Thermometer ;
+                           rdfs:comment "This sensor reports Soil temperature."@en ;
+                           rdfs:label "Soil Thermometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SolarRadiationSensor
+mthreelite:SolarRadiationSensor rdf:type owl:Class ;
+                                rdfs:subClassOf ssn:SensingDevice ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                  owl:someValuesFrom mthreelite:Agriculture
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                  owl:someValuesFrom mthreelite:Weather
+                                                ] ;
+                                rdfs:comment "Device used to detect Solar Radiation."@en ;
+                                rdfs:label "Solar Radiation Sensor"@en ;
+                                rdfs:seeAlso <http://purl.oclc.org/NET/ssnx/meteo/aws#RadiationSensor> ,
+                                             <http://spitfire-project.eu/ontology/ns/Light> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SoundSensor
+mthreelite:SoundSensor rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:BuildingAutomation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Transportation
+                                       ] ;
+                       rdfs:comment "Sensor used to detect Noise level. It can be Sound Sensor, Noise level Sensor, Volume sensor, Microphone"@en ;
+                       rdfs:label "Sound Sensor"@en ;
+                       rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#Microphone> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SpeedSensor
+mthreelite:SpeedSensor rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Transportation
+                                       ] ;
+                       rdfs:comment "Sensor used to detect speed."@en ;
+                       rdfs:label "Speed Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#StayingPeopleCountSensor
+mthreelite:StayingPeopleCountSensor rdf:type owl:Class ;
+                                    rdfs:subClassOf mthreelite:PeopleCountSensor ;
+                                    rdfs:comment "Device used to count the number of people that stays within an area for more than a threshold of time."@en ;
+                                    rdfs:label "Staying People Count Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SunPositionDirectionSensor
+mthreelite:SunPositionDirectionSensor rdf:type owl:Class ;
+                                      rdfs:subClassOf ssn:SensingDevice ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                        owl:someValuesFrom mthreelite:Weather
+                                                      ] ;
+                                      rdfs:comment "Sensor used to detect sun position."@en ;
+                                      rdfs:label "Sun Position Direction Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#SunPositionElevationSensor
+mthreelite:SunPositionElevationSensor rdf:type owl:Class ;
+                                      rdfs:subClassOf ssn:SensingDevice ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                        owl:someValuesFrom mthreelite:Weather
+                                                      ] ;
+                                      rdfs:comment "Device used to detect sun elevation."@en ;
+                                      rdfs:label "Sun Position Elevation Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#TV
+mthreelite:TV rdf:type owl:Class ;
+              rdfs:subClassOf iot-lite:ActuatingDevice ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty mthreelite:hasDomainOfInterest ;
+                                owl:someValuesFrom mthreelite:BuildingAutomation
+                              ] ;
+              rdfs:comment "An actuator to automatically switch on/off the television."@en ;
+              rdfs:label "TV Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Telephone
+mthreelite:Telephone rdf:type owl:Class ;
+                     rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty mthreelite:hasDomainOfInterest ;
+                                       owl:someValuesFrom mthreelite:BuildingAutomation
+                                     ] ;
+                     rdfs:comment "An actuator to automatically switch on/off the Telephone."@en ;
+                     rdfs:label "Telephone Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Thermometer
+mthreelite:Thermometer rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:BuildingAutomation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:EnergyDOI
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Environment
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:Weather
+                                       ] ;
+                       rdfs:comment "A device to measure the temperature in a room or outside."@en ;
+                       rdfs:label "Thermometer"@en ;
+                       rdfs:seeAlso <http://casas.wsu.edu/owl/cose.owl#TempuratureSensor> ,
+                                    <http://purl.oclc.org/NET/ssnx/meteo/aws#TemperatureSensor> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#ThrottleSensor
+mthreelite:ThrottleSensor rdf:type owl:Class ;
+                          rdfs:subClassOf ssn:SensingDevice ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:Transportation
+                                          ] ;
+                          rdfs:comment "It is a device used to monitor the throttle position of a vehicle."@en ;
+                          rdfs:label "Throttle Position Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#TimeOfArrivalNextBusSensor
+mthreelite:TimeOfArrivalNextBusSensor rdf:type owl:Class ;
+                                      rdfs:subClassOf mthreelite:TimeOfArrivalSensor ;
+                                      rdfs:comment "Virtual device that represents a bus stop X and a bus line Y; it estimates the remaining time the next bus (belonging to line Y) will arrive at bus stop X. "@en ;
+                                      rdfs:label "Time of arrival sensor for the next bus"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#TimeOfArrivalSensor
+mthreelite:TimeOfArrivalSensor rdf:type owl:Class ;
+                               rdfs:subClassOf ssn:SensingDevice ;
+                               rdfs:comment "Virtual device that estimates the remaining time for an object to arrive at a specific location."@en ;
+                               rdfs:label "Time of Arrival Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#TouchSensor
+mthreelite:TouchSensor rdf:type owl:Class ;
+                       rdfs:subClassOf ssn:SensingDevice ;
+                       rdfs:comment "Device that captures and records physical touch or embrace on a device and/or object."@en ;
+                       rdfs:label "Touch Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Tourism
+mthreelite:Tourism rdf:type owl:Class ;
+                   rdfs:subClassOf mthreelite:DomainOfInterest ;
+                   rdfs:comment "Tourism as an Internet of Things (IoT) applicative domain."@en ;
+                   rdfs:label "Tourism DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Transportation
+mthreelite:Transportation rdf:type owl:Class ;
+                          rdfs:subClassOf mthreelite:DomainOfInterest ;
+                          rdfs:comment "Transportation, Smart Car/Vehicle, Intelligent Transport System (ITS) as an Internet of Things (IoT) applicative domain."@en ;
+                          rdfs:label "Transportation DOI"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#UltrasonicSensor
+mthreelite:UltrasonicSensor rdf:type owl:Class ;
+                            rdfs:subClassOf ssn:SensingDevice ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty mthreelite:hasDomainOfInterest ;
+                                              owl:someValuesFrom mthreelite:BuildingAutomation
+                                            ] ;
+                            rdfs:comment "Ultrasonic sensors are used to deduce human posture in smart home for example."@en ;
+                            rdfs:label "Ultrasonic Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VOCSensor
+mthreelite:VOCSensor rdf:type owl:Class ;
+                     rdfs:subClassOf mthreelite:GaseousPollutantSensor ;
+                     rdfs:comment "Sensor that detects levels of Volatile Organic Components (VOC) in the environment."@en ;
+                     rdfs:label "Volatile Organic Compound (VOC) Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VehicleCountSensor
+mthreelite:VehicleCountSensor rdf:type owl:Class ;
+                              rdfs:subClassOf mthreelite:Counter ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                owl:someValuesFrom mthreelite:Transportation
+                                              ] ;
+                              rdfs:comment "Device used to count the number of vehicles (e.g., used within the Citypulse project)."@en ;
+                              rdfs:label "Vehicle Count Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VehiclePresenceDetector
+mthreelite:VehiclePresenceDetector rdf:type owl:Class ;
+                                   rdfs:subClassOf mthreelite:PresenceDetector ;
+                                   rdfs:comment "Device used to detect if an vehicle is present at a place."@en ;
+                                   rdfs:label " Vehicle Presence Detector"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Ventilation
+mthreelite:Ventilation rdf:type owl:Class ;
+                       rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty mthreelite:hasDomainOfInterest ;
+                                         owl:someValuesFrom mthreelite:BuildingAutomation
+                                       ] ;
+                       rdfs:comment "An actuator to automatically open/close the ventilation."@en ;
+                       rdfs:label "Ventilation Actuating Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VisibilitySensor
+mthreelite:VisibilitySensor rdf:type owl:Class ;
+                            rdfs:subClassOf ssn:SensingDevice ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty mthreelite:hasDomainOfInterest ;
+                                              owl:someValuesFrom mthreelite:Transportation
+                                            ] ;
+                            rdfs:comment "Device used to detect Visibility."@en ;
+                            rdfs:label "Visibility Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VoiceCommandController
+mthreelite:VoiceCommandController rdf:type owl:Class ;
+                                  rdfs:subClassOf iot-lite:ActuatingDevice ;
+                                  rdfs:comment "An actuating device called  that allows to semi-control the environment of the Voice Command Sensor."@en ;
+                                  rdfs:label "Voice Command Controller"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VoiceCommandSensor
+mthreelite:VoiceCommandSensor rdf:type owl:Class ;
+                              rdfs:subClassOf ssn:SensingDevice ;
+                              rdfs:comment "Sensor that uses automatic speech recognition technology to match or reject a recorded voice command according to a specified set of available voice commands."@en ;
+                              rdfs:label "Voice Command Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#VoltageSensor
+mthreelite:VoltageSensor rdf:type owl:Class ;
+                         rdfs:subClassOf ssn:SensingDevice ;
+                         rdfs:comment "Device which can measure the difference in electric potential energy between two points per unit electric charge."@en ;
+                         rdfs:label "Voltage Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WashingMachine
+mthreelite:WashingMachine rdf:type owl:Class ;
+                          rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty mthreelite:hasDomainOfInterest ;
+                                            owl:someValuesFrom mthreelite:BuildingAutomation
+                                          ] ;
+                          rdfs:comment "An actuator to automatically switch on/off the washing machine."@en ;
+                          rdfs:label "Washing Machine Actuation Device"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WaterConductivitySensor
+mthreelite:WaterConductivitySensor rdf:type owl:Class ;
+                                   rdfs:subClassOf mthreelite:ConductivitySensor ;
+                                   rdfs:comment "Device used to measure the conductivity of water."@en ;
+                                   rdfs:label "Water Conductivity Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WaterNH4IonSensor
+mthreelite:WaterNH4IonSensor rdf:type owl:Class ;
+                             rdfs:subClassOf ssn:SensingDevice ;
+                             rdfs:comment "Sensor used to measure NH4 concentration level in the water."@en ;
+                             rdfs:label "Water NH4 Ion Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WaterNO3IonSensor
+mthreelite:WaterNO3IonSensor rdf:type owl:Class ;
+                             rdfs:subClassOf ssn:SensingDevice ;
+                             rdfs:comment "Sensor used to measure NO3 concentration level in the water."@en ;
+                             rdfs:label "Water NO3 Ion Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WaterO2IonSensor
+mthreelite:WaterO2IonSensor rdf:type owl:Class ;
+                            rdfs:subClassOf ssn:SensingDevice ;
+                            rdfs:comment "Sensor used to measure O2 concentration level in the water."@en ;
+                            rdfs:label "Water O2 Ion Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WaterPHSensor
+mthreelite:WaterPHSensor rdf:type owl:Class ;
+                         rdfs:subClassOf mthreelite:PHSensor ;
+                         rdfs:comment "Device used to detect PH level of water."@en ;
+                         rdfs:label "Water PH Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WaterThermometer
+mthreelite:WaterThermometer rdf:type owl:Class ;
+                            rdfs:subClassOf mthreelite:Thermometer ;
+                            rdfs:comment "This sensor reports Water temperature."@en ;
+                            rdfs:label "Water Thermometer"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Weather
+mthreelite:Weather rdf:type owl:Class ;
+                   rdfs:subClassOf mthreelite:DomainOfInterest ;
+                   rdfs:comment "Weather Forecasting, Meterology as an Internet of Things (IoT) applicative domain."@en ;
+                   rdfs:label "Weather Forecasting DOI"@en ;
+                   rdfs:seeAlso <http://archive.knoesis.org/research/semsci/application_domain/sem_sensor/ont/sensor-observation.owlWeatherObservation> .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WeightSensor
+mthreelite:WeightSensor rdf:type owl:Class ;
+                        rdfs:subClassOf ssn:SensingDevice ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty mthreelite:hasDomainOfInterest ;
+                                          owl:someValuesFrom mthreelite:Health
+                                        ] ;
+                        rdfs:comment "Device used to weight an object."@en ;
+                        rdfs:label "Weight Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WiFiInterfaceEnergyMeter
+mthreelite:WiFiInterfaceEnergyMeter rdf:type owl:Class ;
+                                    rdfs:subClassOf mthreelite:EnergyMeter ;
+                                    rdfs:comment "Measure the average power consumption of the WiFi interface nodes."@en ;
+                                    rdfs:label "WiFi Interface Energy Meter"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WindChillSensor
+mthreelite:WindChillSensor rdf:type owl:Class ;
+                           rdfs:subClassOf ssn:SensingDevice ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Weather
+                                           ] ;
+                           rdfs:comment "Device used to detect Wind Chill."@en ;
+                           rdfs:label "Wind Chill Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WindDirectionSensor
+mthreelite:WindDirectionSensor rdf:type owl:Class ;
+                               rdfs:subClassOf ssn:SensingDevice ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty mthreelite:hasDomainOfInterest ;
+                                                 owl:someValuesFrom mthreelite:Weather
+                                               ] ;
+                               rdfs:comment "Device used to detect wind direction."@en ;
+                               rdfs:label "Wind Direction Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#WindSpeedSensor
+mthreelite:WindSpeedSensor rdf:type owl:Class ;
+                           rdfs:subClassOf mthreelite:SpeedSensor ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Agriculture
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Environment
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty mthreelite:hasDomainOfInterest ;
+                                             owl:someValuesFrom mthreelite:Weather
+                                           ] ;
+                           rdfs:comment "Wind Speed Sensor, Anemometer or Wind Velocity Sensor is used to measure the wind speed."@en ;
+                           rdfs:label "Wind Speed Sensor"@en .
+
+
+###  http://purl.org/iot/vocab/m3-lite#Window
+mthreelite:Window rdf:type owl:Class ;
+                  rdfs:subClassOf iot-lite:ActuatingDevice ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty mthreelite:hasDomainOfInterest ;
+                                    owl:someValuesFrom mthreelite:BuildingAutomation
+                                  ] ;
+                  rdfs:comment "An actuator to automatically open/close the window."@en ;
+                  rdfs:label "Window Actuating Device"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#Device
+onemtom:Device rdf:type owl:Class ;
+               rdfs:comment """A Device (Class: Device) is a object designed to accomplish a particular task. A Device contains some logic and is producer and/or consumer of data that are exchanged via its Services with other oneM2M entities (Devices, Things) in the network. A Device may be a physical or non-physical entity.
+In the context of oneM2M a Device is always assumed to be capable of communicating electronically via a network.
+ - In order to accomplish its task, the device performs one or more functionalities 
+ - These functionalities are exposed in the network as Services of the Device.
+ - A Device can be composed of several (sub-) Devices 
+ - Each Device (including sub-Devices) needs to be individually addressable in the network.""" ;
+               rdfs:label "Device"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#MetaData
+onemtom:MetaData rdf:type owl:Class ;
+                 rdfs:comment """MetaData (Class: MetaData) contain data (like units, precision-ranges …) about a Variable or about an Aspect. 
+E.g. the indoor temperature could have meta data: \"Degrees Celsius\"""" ;
+                 rdfs:label "MetaData"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#OperationOutput
+onemtom:OperationOutput rdf:type owl:Class ;
+                        rdfs:comment """OperationOutput (Class: OperationOutput) describes an output of an Operation. OperationOutput also describes the output of a Command. 
+ - An Operation/Command may have multiple OperationInputs and/or OperationOutputs""" ;
+                        rdfs:label "Operation Output"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#Service
+onemtom:Service rdf:type owl:Class ;
+                rdfs:comment ssn:Observation ,
+                             """A Service (Class: Service) is a electronic representation of a Functionality in a network. The Service exposes the Functionality to the network and makes it discoverable, registerable and remotely controllable in the network. 
+A Service is offered by a device that wants (a certain set of) its Functionalities to be discoverable, registerable, remotely controllable by other devices in the network. 
+A Service can expose one or more Functionalities and a Functionality can be exposed by one or more Services.
+The Input- and Output DataPoints and Operations of a Service may have the same names as for a different Service, however the Service to which they belong differentiates how they are addressed in the Device (e.g. via a port specific to the Service).
+NOTE: While a Functionality  describes the – human understandable – meaning of a Service of the device the Service is used to describe how such functionality is represented in a communication network and can be accessed by electronic means. The Service and its Operations is therefore dependent on the technology of the network, hard- and software of the device.""" ;
+                rdfs:label "Service"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#Thing
+onemtom:Thing rdf:type owl:Class ;
+              rdfs:comment """A Thing in oneM2M  (Class: Thing) is an entity that can be identified in the oneM2M System. 
+A Thing that is not a Device is not able to communicate electronically with its environment. However, the sub-class of Thing that is able to interact electronically is called a \"Device\".
+A Thing may have ThingProperties (Object Property: hasThingProperty). A Thing can have relations to other things (Object Property: hasThingRelation).
+Since a Thing that is not a Device is not able to communicate electronically it cannot influence the value of its ThingProperties or being influenced by it. Similarly a Thing cannot document its - real-world - relationships (via hasThingRelation) to other Things.
+
+E.g. A room that is modelled in oneM2M would be a Thing that could have a room-temperature as a ThingProperty and could have a relationship \"isAdjacentTo\" to another room""" ;
+              rdfs:label "Thing"@en .
+
+
+###  http://www.onem2m.org/ontology/Base_Ontology/base_ontology#ThingProperty
+onemtom:ThingProperty rdf:type owl:Class ;
+                      rdfs:comment """A Value (Class: Value) denotes a property of a Thing. A Value can e.g. be observed or influenced by devices, or it constitutes static data about a Thing.
+E.g. the indoor temperature of the room could be a Value of a Thing \"room\".
+A Value of a thing can concern a certain Aspect, e.g. the indoor temperature concerns the Aspect \"Temperature\" that could be measured by a temperature sensor.
+A Value of a Thing can have meta data""" ;
+                      rdfs:label "Thing Property"@en .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#Point
+geo:Point rdf:type owl:Class ;
+          iot-lite:altRelative "" ;
+          iot-lite:relativeLocation "" ;
+          rdfs:label "Point"@en ;
+          geo:alt "" ;
+          geo:lat "" ;
+          geo:long "" .
+
+
+###  http://www.w3.org/2006/time#Instant
+time:Instant rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
